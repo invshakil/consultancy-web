@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-    <div style="height: 115vh;">
+    <div style="height: 100vh;">
         <div class="contact"></div>
         <h2 class="text-4xl text-cancel contact-header text-center tracking-wider font-bold">ABOUT US</h2>
         <p class="text-sm text-text text-center contact-message tracking-wider font-light">

@@ -116,14 +116,14 @@ class ArticleRepository implements ArticleInterface
     {
         $subscribers = NewsLetter::all();
         $data = [
-            'name' => 'Tanventurer',
+            'name' => env('APP_NAME'),
             'thanks' => 'Thanks for staying in touch',
             'hello' => 'Hello Dear Subscriber!!',
-            'email' => 'tanvirrezaanik@gmail.com',
-            'contact' => 'Get in touch with me for anything at: ',
+            'email' => env('SENDER_EMAIL'),
+            'contact' => 'Get in touch with us for anything at: ',
             'subject' => 'Whoooo! Tan wrote a new something!!',
-            'link' => "tanventurer.com/articles/$article->slug",
-            'body' => 'Tanventurer had a recent article published.You can find the post in this link: ',
+            'link' => env('APP_URL') ."/article/$article->slug",
+            'body' => env('APP_NAME'). ' had a recent article published.You can find the post in this link: ',
         ];
 
         for ($i = 0; $i < $subscribers->count(); $i++) {

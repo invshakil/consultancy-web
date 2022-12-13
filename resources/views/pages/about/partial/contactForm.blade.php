@@ -14,19 +14,19 @@
                            placeholder="EMAIL" name="email" value="">
                 </div>
             </div>
-            <textarea class="form-control border-grey focus:border-lightGreen focus:ring-0" rows="8"
+            <textarea class="form-control border-grey focus:border-lightGreen focus:ring-0" rows="6"
                       placeholder="MESSAGE" id="message" name="message"></textarea>
-            <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">
-                <div class="alt-send-button">
-                    <i class="fa fa-paper-plane"></i><span class="send-text">SEND</span>
-                </div>
+            <button class="btn send-button btn-primary px-4 py-2 bg-lightBlue text-white hover:bg-lightGreen rounded-full" id="submit" type="submit">
+                SEND
             </button>
-            <p class="successMsg hidden text-lg text-center w-full text-lightGreen font-extrabold bg-whiteDark px-5 py-3 my-5">
+            <section id="loading" class="send-button">
+                <div id="loading-content"></div>
+            </section>
+            <p class="successMsg hidden text-lg text-center text-lightGreen font-extrabold bg-whiteDark px-5 py-3 my-5">
                 Your Message Has Been Received! We Will Get Back To You Soon!!</p>
-            <p class="errorMsg hidden text-lg text-center w-full text-white font-extrabold bg-cancel px-5 py-3 my-5">
+            <p class="errorMsg hidden text-lg text-center text-white font-extrabold bg-cancel px-5 py-3 my-5">
                 Something Went Wrong! Please Try Again!
             </p>
-
         </form>
 
         <div class="direct-contact-container">
@@ -34,23 +34,23 @@
                 <li class="list-item"><i class="fa fa-map-marker fa-2x"><span
                             class="contact-text place">Dhaka, Bangladesh</span></i></li>
                 <li class="list-item"><i class="fa fa-phone fa-2x"><span class="contact-text phone"><a
-                                href="tel:1-212-555-5555" title="Give me a call">(212) 555-2368</a></span></i></li>
+                                href="tel:1-212-555-5555" title="Give me a call">{{env('PHONE_NUMBER')}}</a></span></i></li>
                 <li class="list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a
-                                href="mailto:#" title="Send me an email">hitmeup@gmail.com</a></span></i></li>
+                                href="mailto:{{env('RECEIVER_EMAIL')}}" title="Send me an email">{{env('RECEIVER_EMAIL')}}</a></span></i></li>
             </ul>
             <hr>
             <ul class="social-media-list">
-                <li><a href="#" target="_blank" class="contact-icon">
-                        <i class="fa fa-github" aria-hidden="true"></i>
+                <li><a href="{{env('FACEBOOK')}}" target="_blank" class="contact-icon">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
                     </a>
                 </li>
-                <li><a href="#" target="_blank" class="contact-icon">
-                        <i class="fa fa-codepen" aria-hidden="true"></i></a>
+                <li><a href="{{env('LINKEDIN')}}" target="_blank" class="contact-icon">
+                        <i class="fa fa-linkedin" aria-hidden="true"></i></a>
                 </li>
-                <li><a href="#" target="_blank" class="contact-icon">
+                <li><a href="{{env('TWITTER')}}" target="_blank" class="contact-icon">
                         <i class="fa fa-twitter" aria-hidden="true"></i></a>
                 </li>
-                <li><a href="#" target="_blank" class="contact-icon">
+                <li><a href="{{env('INSTAGRAM')}}" target="_blank" class="contact-icon">
                         <i class="fa fa-instagram" aria-hidden="true"></i></a>
                 </li>
             </ul>
@@ -65,10 +65,12 @@
             $(document).on('submit', '.contact-form', function (e) {
                 e.preventDefault()
                 let verified = $('#email').val() && $('#message').val()
-                let data = new FormData()
-                data.append('name', $('#name').val())
-                data.append('email', $('#email').val())
-                data.append('message', $('#message').val())
+
+                let data = {
+                    'name': $('#name').val(),
+                    'email': $('#email').val(),
+                    'message': $('#message').val(),
+                }
 
                 $.ajaxSetup({
                     headers: {
@@ -76,21 +78,30 @@
                     }
                 });
                 if (verified) {
+                    $('#submit').css({ opacity: 0 })
+                    showLoading()
                     $.ajax({
                         type: 'POST',
                         url: `/contact-mail`,
                         data: data,
                         dataType: 'json',
-                        processData: false,  // tell jQuery not to process the data
-                        contentType: false,
-                        success: function (response) {
-                            console.log('response', response.status)
-                            // localStorage.removeItem('phone')
+                        success: ()=> {
+                            // console.log('response', response)
                             $('.successMsg').show()
                             $("#contact-form").trigger("reset")
                         },
                         error: function (XMLHttpRequest, textStatus, errorThrown) {
-                            $('.errorMsg').show()
+                            if(XMLHttpRequest.status===201){
+                                $('.successMsg').show()
+                                $("#contact-form").trigger("reset")
+                                hideLoading()
+                                $('#submit').css({ opacity: 100 })
+                            }
+                            else{
+                                hideLoading()
+                                $('.errorMsg').show()
+                                $('#submit').css({ opacity: 100 })
+                            }
                         }
                     })
                 } else {
@@ -124,9 +135,20 @@
                 input.css('border', '1px solid red');
             }
         });
+
+        function showLoading() {
+            document.querySelector('#loading').classList.add('loading');
+            document.querySelector('#loading-content').classList.add('loading-content');
+        }
+
+        function hideLoading() {
+            document.querySelector('#loading').classList.remove('loading');
+            document.querySelector('#loading-content').classList.remove('loading-content');
+        }
     </script>
 
     <style>
+
         #contact {
             width: 100%;
             height: 100%;
@@ -136,7 +158,7 @@
             text-align: center;
             margin: 0 auto;
             padding: 40px 0;
-            font: 300 60px 'Oswald', sans-serif;
+            font: 300 40px 'Oswald', sans-serif;
             color: #3c2060;
             text-transform: uppercase;
             letter-spacing: 6px;
@@ -145,17 +167,20 @@
         .contact-wrapper {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
-            margin: 0 auto;
-            padding: 20px;
+            justify-content: center;
+            /*margin-left: 50px;*/
+            padding: 0 20%;
+            margin: 20px auto 100px auto;
+            /*padding: 20px;*/
             position: relative;
-            max-width: 840px;
+
+            /*max-width: 840px;*/
         }
 
         /* Left contact page */
         .form-horizontal {
             /*float: left;*/
-            max-width: 400px;
+            /*max-width: 400px;*/
             font-family: 'Lato';
             font-weight: 400;
         }
@@ -178,31 +203,13 @@
         .send-button {
             margin-top: 15px;
             height: 34px;
-            width: 400px;
+            width: 30vw;
             overflow: hidden;
             transition: all .2s ease-in-out;
         }
-
-        .alt-send-button {
-            width: 400px;
-            height: 34px;
-            transition: all .2s ease-in-out;
-        }
-
-        .send-text {
-            display: block;
-            margin-top: 10px;
-            font: 700 12px 'Lato', sans-serif;
-            letter-spacing: 2px;
-        }
-
-        .alt-send-button:hover {
-            transform: translate3d(0px, -29px, 0px);
-        }
-
         /* Begin Right Contact Page */
         .direct-contact-container {
-            max-width: 400px;
+            /*max-width: 400px;*/
         }
 
         /* Location, Phone, Email Section */
@@ -219,7 +226,7 @@
 
         .contact-text {
             font: 300 18px 'Lato', sans-serif;
-            letter-spacing: 1.9px;
+            letter-spacing: 2px;
             color: #de5a06;
         }
 
@@ -320,7 +327,10 @@
                 display: flex;
                 flex-direction: column;
             }
-
+            .form-control, textarea {
+                width: 50vw;
+                margin: 0 auto;
+            }
             .direct-contact-container, .form-horizontal {
                 margin: 0 auto;
             }
@@ -351,7 +361,7 @@
             }
 
             .form-control, textarea {
-                width: 90vw;
+                width: 70vw;
                 margin: 0 auto;
             }
 

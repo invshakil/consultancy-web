@@ -12,7 +12,7 @@
             @include('pages.articleDetail.partial.disquss')
         </div>
         <div class="w-32 lg:ml-16">
-            <div class="fixed" style="overflow-y: scroll; height: 80vh; z-index: -1">
+            <div class="fixed" style="overflow-y: scroll; height: 80vh;">
                 <h2 class="text-2xl" style="margin-top: 1vh;" >Similar Articles</h2>
                 <hr style="width: 70%;"/>
                 @foreach($similarArticles as $sArticle)

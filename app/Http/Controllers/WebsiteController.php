@@ -81,7 +81,7 @@ class WebsiteController extends Controller
         $this->seo($this->baseSeoData);
         $news = News::where('published', 1)->get();
 
-        return view('pages.home.index', compact('news','featuredPosts'));
+        return view('pages.home.index', compact('news', 'featuredPosts'));
     }
 
     public function about()
@@ -156,9 +156,27 @@ class WebsiteController extends Controller
 
     public function contactMail(Request $request)
     {
-        dd($request->input());
+        $this->sendMail($request);
         $this->seo($this->baseSeoData);
-        return response('sent', 200);
+        return response('sent', 201);
+    }
+
+    private function sendMail($request)
+    {
+//        dd($request->input());
+        $data = [
+            'name' => $request->input('name'),
+            'hello' => 'Hello Admin!',
+            'email' => $request->input('email'),
+            'subject' => 'New E-Mail Received For ' . env('APP_NAME'),
+            'body' => $request->input('message')
+        ];
+
+        \Mail::send('email.contact-admin', $data, function ($message) use ($data) {
+            $message->to(env('RECEIVER_EMAIL'))
+                ->from($data['email'], $data['name'])
+                ->subject($data['subject']);
+        });
     }
 
     public function submitCV(Request $request)

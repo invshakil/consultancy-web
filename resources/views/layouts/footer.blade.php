@@ -1,4 +1,4 @@
-<footer class="border-x-0 border-y-2 border-y-whiteDark">
+<div class="border-x-0 border-y-2 border-y-whiteDark bg-offWhite" style="z-index: 1000; position: relative">
     <div class="grid grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
         <div>
             <h2 class="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">Company</h2>
@@ -85,4 +85,4 @@
             </a>
         </div>
     </div>
-</footer>
+</div>
