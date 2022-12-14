@@ -1,9 +1,9 @@
 <div class="bg-white shadow shadow-offWhite shadow-lg mt-5 lg:ml-10 rounded rounded-md">
     <div class="md:px-14 px-4 pt-7 pb-1">
         <div class="lg:flex justify-between my-2">
-            <h2 class="text-lightGreen md:text-2xl text-xl pb-2 font-bold px-3 w-screen break-all">{{$title}}</h2>
+            <h2 class="text-lightGreen lg:text-left text-center md:text-2xl text-xl pb-2 font-bold px-3 w-screen break-all">{{$title}}</h2>
             <a href="{{route('verify', ['id' => $code])}}"
-               class="bg-lightGreen text-center md:text-lg font-medium rounded-full px-5 py-2 text-white ml-32">
+               class="bg-lightGreen text-center md:text-lg font-medium rounded-full px-5 py-2 text-white ml-36">
                 Apply
             </a>
         </div>

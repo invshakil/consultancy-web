@@ -27,8 +27,8 @@
         </button>
 
 
-        <div class="hidden w-full md:block md:w-96 mr-44" id="navbar-multi-level">
-            <ul style="margin-top: 3vh" class="flex md:mt-0">
+        <div class="hidden lg:mt-0 mt-10 w-full md:block md:w-96 mr-44" id="navbar-multi-level">
+            <ul style="margin-top: 3vh; margin-bottom: 2vh" class="flex md:mt-0">
                 <li style="z-index: 100!important;"
                     class="px-3 font-bold tracking-widest bg-lightBlue cursor-pointer text-lightGreen li flex items-center"><a
                         class="hover:text-cancel @if(Request::url() == url('/')) text-cancel @endif"
@@ -166,8 +166,9 @@
         )
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         .cutCorner {
+            background-color: #4a4b62;
             width: 100vw!important;
         }
     }

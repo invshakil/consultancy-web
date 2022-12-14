@@ -5,7 +5,7 @@
             <span class="text-cancel">CHANGE</span> <span class="text-cancel">PEOPLE'S</span> LIVES</h2>
     </div>
     @include('pages.home.partial.carousal')
-    <div class="lg:px-32 px-10">
+    <div class="lg:px-32 px-2">
         <div class="text-center py-10 px-2">
             <h2 class="text-4xl text-mainBlue"> OUR JOB OFFERS</h2>
             <p class="text-cancel">Delivering excellence to all areas of our focus</p>
@@ -67,6 +67,12 @@
             width: 94%;
             margin-left: 3%;
             min-height: 40vh
+        }
+
+        @media screen and (max-width: 800px) {
+            .newsSection {
+                padding: 0;
+            }
         }
 
     </style>
