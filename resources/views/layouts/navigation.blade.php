@@ -30,11 +30,11 @@
         <div class="hidden lg:mt-0 mt-10 w-full md:block md:w-96 mr-44" id="navbar-multi-level">
             <ul style="margin-top: 3vh; margin-bottom: 2vh" class="flex md:mt-0">
                 <li style="z-index: 100!important;"
-                    class="px-3 font-bold tracking-widest bg-lightBlue cursor-pointer text-lightGreen li flex items-center"><a
+                    class="px-3 font-bold tracking-widest bg-lightBlue cursor-pointer text-white li flex items-center"><a
                         class="hover:text-cancel @if(Request::url() == url('/')) text-cancel @endif"
                         href="{{route('home')}}">HOME</a></li>
 
-                <li class="text-lightGreen bg-lightBlue li @if(Request::url() == url('/study')) text-cancel @endif font-bold tracking-widest hover:text-cancel"
+                <li class="text-white bg-lightBlue li @if(Request::url() == url('/study')) text-cancel @endif font-bold tracking-widest hover:text-cancel"
                     style="z-index: 100!important;">
                     <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
                             class="px-3 cursor-pointer flex items-center">
@@ -95,17 +95,17 @@
                     </div>
                 </li>
                 <li style="z-index: 100!important;"
-                    class="px-3 @if(Request::url() == url('/jobs')) text-cancel @endif bg-whiteDark cursor-pointer font-bold tracking-widest li text-lightGreen flex items-center">
+                    class="px-3 @if(Request::url() == url('/jobs')) text-cancel @endif bg-whiteDark cursor-pointer font-bold tracking-widest li text-mainBlue flex items-center">
                     <a
                         class="hover:text-cancel " href="{{route('job')}}">JOBS</a>
                 </li>
                 <li style="z-index: 100!important;"
-                    class="px-3 @if(Request::url() == url('/blog')) text-cancel @endif bg-whiteDark cursor-pointer font-bold tracking-widest li text-lightGreen flex items-center">
+                    class="px-3 @if(Request::url() == url('/blog')) text-cancel @endif bg-whiteDark cursor-pointer font-bold tracking-widest li text-mainBlue flex items-center">
                     <a
                         class="hover:text-cancel " href="{{route('blog')}}">BLOG</a>
                 </li>
                 <li style="z-index: 100!important;"
-                    class="px-3 @if(Request::url() == url('/about')) text-cancel @endif cursor-pointer bg-whiteDark font-bold tracking-widest li text-lightGreen flex items-center">
+                    class="px-3 @if(Request::url() == url('/about')) text-cancel @endif cursor-pointer bg-whiteDark font-bold tracking-widest li text-mainBlue flex items-center">
                     <a
                         class="hover:text-cancel " href="{{route('about')}}">CONTACT</a>
                 </li>
@@ -130,7 +130,7 @@
                     list.addClass("text-white");
                 } else {
                     list.removeClass("text-white");
-                    list.addClass("text-lightGreen");
+                    list.addClass("text-mainBlue");
                     list.addClass("font-bold");
                     list.addClass("bg-whiteDark");
                     // list.addClass("bg-lightBlue");

@@ -7,7 +7,7 @@
             <div class="grid py-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2">
                 @foreach($publishedArticles as $key=> $article)
                     <div class="text-left ">
-                        <div class=" p-4 rounded-md border border-2 shadow-lg shadow-text border-whiteDark">
+                        <div class=" p-4 rounded-md border border-1 border-whiteDark">
                             <a href="{{route('article-details', ['slug'=>$article['slug']])}}">
                                 <img src="{{asset($article['image'])}}" width="100%" alt=""
                                      class="mb-2 object-cover rounded-lg" style="height: 250px;"/>
