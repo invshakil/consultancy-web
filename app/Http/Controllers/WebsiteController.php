@@ -91,6 +91,26 @@ class WebsiteController extends Controller
 
         return view('pages.about.index');
     }
+    public function blog()
+    {
+        $publishedArticles = $this->articleRepository->publishedArticles(1, 6);
+        $mostReadArticles = \Cache::remember('most_read_articles', config('cache.half_ttl'), function () {
+            return $this->articleRepository->mostReadArticles(1, 3);
+        });
+        $featuredArticles = \Cache::remember('featuredArticles', config('cache.half_ttl'), function () {
+            return $this->articleRepository->publishedFeaturedArticles(3);
+        });
+
+        $this->seo($this->baseSeoData);
+
+        return view('pages.blog.index',
+            compact(
+                'publishedArticles',
+                'mostReadArticles',
+                'featuredArticles',
+            )
+        );
+    }
 
     public function job()
     {

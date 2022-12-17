@@ -62,6 +62,7 @@ Route::get('/jobs', [WebsiteController::class, 'job'])->name('job');
 Route::get('/study/{country}', [WebsiteController::class, 'study'])->name('study');
 Route::get('/search', [WebsiteController::class, 'searchArticle'])->name('search');
 Route::get('/about', [WebsiteController::class, 'about'])->name('about');
+Route::get('/blog', [WebsiteController::class, 'blog'])->name('blog');
 Route::get('/article/{slug}', [WebsiteController::class, 'articleDetails'])->name('article-details');
 Route::get('/upload-cv/{id}', [WebsiteController::class, 'resume'])->name('upload-cv');
 Route::post('/submit-cv', [WebsiteController::class, 'submitCV'])->name('submit-cv');

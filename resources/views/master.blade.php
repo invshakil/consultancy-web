@@ -18,7 +18,8 @@
     <meta itemprop="author" content="Masum Billa"/>
     <meta itemprop="author" content="মাসুম বিল্লাহ"/>
 </head>
-<body class="bg-offWhite text-text" style="background: linear-gradient(40deg, #ffffff, #d7d7d7, #cad9d1);font-family: Roboto, sans-serif; overflow-x: hidden!important;">
+{{--<body class="bg-offWhite text-text" style="background: linear-gradient(40deg, #ffffff, #d7d7d7, #cad9d1);font-family: Roboto, sans-serif; overflow-x: hidden!important;">--}}
+<body class="bg-offWhite text-text">
 @include('layouts.navigation')
 <div>
     @yield('content')

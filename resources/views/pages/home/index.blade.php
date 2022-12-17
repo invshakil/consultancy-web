@@ -5,7 +5,7 @@
             <span class="text-cancel">CHANGE</span> <span class="text-cancel">PEOPLE'S</span> LIVES</h2>
     </div>
     @include('pages.home.partial.carousal')
-    <div class="lg:px-32 px-2">
+    <div class="lg:px-32 px-2 carousalD">
         <div class="text-center py-10 px-2">
             <h2 class="text-4xl text-mainBlue"> OUR JOB OFFERS</h2>
             <p class="text-cancel">Delivering excellence to all areas of our focus</p>
@@ -27,24 +27,10 @@
                 </div>
             @endforeach
         </div>
-        @include('pages.home.partial.blogs',['articles'=>$featuredPosts])
+        @include('components.blogs',['articles'=>$featuredPosts])
         @include('components.getIinTouch')
     </div>
     <style>
-        .centerItems {
-            position: relative;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .centerItemsAbsolute {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
         .newsSection {
             transform: rotate(0deg);
             text-align: center;

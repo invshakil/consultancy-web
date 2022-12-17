@@ -97,11 +97,18 @@
                 <li style="z-index: 100!important;"
                     class="px-3 @if(Request::url() == url('/jobs')) text-cancel @endif bg-whiteDark cursor-pointer font-bold tracking-widest li text-lightGreen flex items-center">
                     <a
-                        class="hover:text-cancel " href="{{route('job')}}">JOBS</a></li>
+                        class="hover:text-cancel " href="{{route('job')}}">JOBS</a>
+                </li>
+                <li style="z-index: 100!important;"
+                    class="px-3 @if(Request::url() == url('/blog')) text-cancel @endif bg-whiteDark cursor-pointer font-bold tracking-widest li text-lightGreen flex items-center">
+                    <a
+                        class="hover:text-cancel " href="{{route('blog')}}">BLOG</a>
+                </li>
                 <li style="z-index: 100!important;"
                     class="px-3 @if(Request::url() == url('/about')) text-cancel @endif cursor-pointer bg-whiteDark font-bold tracking-widest li text-lightGreen flex items-center">
                     <a
-                        class="hover:text-cancel " href="{{route('about')}}">CONTACT</a></li>
+                        class="hover:text-cancel " href="{{route('about')}}">CONTACT</a>
+                </li>
             </ul>
         </div>
     </div>
