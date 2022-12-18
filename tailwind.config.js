@@ -38,7 +38,7 @@ module.exports = {
             'green': '#20A100',
             'bubble-gum': '#e854d0',
             'bermuda': '#78dcca',
-            'setMIX': '#4cc7ae',
+            'setMIX': '#8eb0aa',
         },
         extend: {
 
