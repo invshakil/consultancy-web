@@ -33,7 +33,7 @@
             </form>
         </div>
 
-        <div class="xl:px-32 px-6 pb-8 xl:pt-24 pt-40">
+        <div class="xl:px-32 px-6 pb-8 xl:pt-4 pt-40">
             @include('pages.study.partial.douments')
             @include('pages.study.partial.package')
             @include('pages.study.partial.chooseCountry')
@@ -216,7 +216,7 @@
             background: rgb(25, 178, 117, .1);
             text-shadow: 0 0 black;
             position: relative;
-            margin-top: -18vh;
+            margin-top: -10vh;
             height: 285px;
             margin-right: 2%;
         }
