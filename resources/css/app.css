@@ -55,4 +55,7 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+textarea:focus, input:focus{
+    outline: none;
+}
 

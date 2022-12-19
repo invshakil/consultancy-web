@@ -8,19 +8,19 @@
             <form id="sendForm" class="form-study flex flex-col px-2 py-4 submit rounded-sm" onsubmit="process(event)"
                   method="post">
                 {{--                <p>Enter your phone number:</p>--}}
-                <input id="name" type="text" name="name" placeholder="Name"/>
-                <input id="number" type="tel" name="number"/>
+                <input class="input border-none focus:ring-0" id="name" type="text" name="name" placeholder="Name"/>
+                <input class="input border-none focus:ring-0" id="number" type="tel" name="number"/>
 
-                <input id="email" type="email" name="email" placeholder="Email"/>
-                <div class="flex justify-start text-mainBlue pl-3 py-2 text-xs bg-white"
+                <input class="input border-none focus:ring-0" id="email" type="email" name="email" placeholder="Email"/>
+                <div class="flex justify-start text-gray-400 pl-3 py-2 text-xs"
                      style="text-shadow:0 0 black;margin: 1px 0;">
                     <p class="mr-2">Same whatsapp number?</p>
-                    <input id="same" type="checkbox"/>
+                    <input id="same" class="input" type="checkbox"/>
                 </div>
-                <input id="whatsapp" type="tel" name="whatsapp" placeholder="Whatsapp Number"/>
+                <input class="input border-none focus:ring-0" id="whatsapp" type="tel" name="whatsapp" placeholder="Whatsapp Number"/>
                 <input type="submit"
                        id="submit"
-                       class="submitStudy btn cursor-pointer bg-lightGreen hover:bg-lightBlue text-white font-bold py-2 px-4"
+                       class="submitStudy my-2 btn cursor-pointer bg-tahiti hover:bg-lightGreen text-white font-bold py-2 px-4"
                        value="Submit"/>
                 <section id="loading" class="send-button" style="height: 20px!important;">
                     <div id="loading-content"></div>
@@ -213,17 +213,21 @@
         }
 
         .form-study {
-            background: rgb(25, 178, 117, .1);
+            /*background: rgb(25, 178, 117, .1);*/
+            background-color: #392650;
             text-shadow: 0 0 black;
             position: relative;
             margin-top: -10vh;
-            height: 285px;
+            height: 315px;
             margin-right: 2%;
         }
 
-        .form-study input {
+        .input {
+            border: 1px solid #4a4b62;
+            margin: 4px 0;
+            color: #2da676;
+            background-color: inherit;
             /*padding: 2px;*/
-            margin: 1px 0;
             /*height: 3px;*/
         }
     </style>

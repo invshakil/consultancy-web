@@ -25,7 +25,7 @@ module.exports = {
             'text': '#282828',
             'text2': '#b21919',
             'metal': '#8f8eb7',
-            'tahiti': '#59d5a4',
+            'tahiti': '#45836b',
             'lightGreen': '#2da676',
             'complete': '#E2EFDA',
             'pending': '#FEDC81',
@@ -39,7 +39,7 @@ module.exports = {
             'green': '#20A100',
             'bubble-gum': '#e854d0',
             'bermuda': '#78dcca',
-            'setMIX': '#bbeee5',
+            'setMIX': '#4cb7a2',
         },
         extend: {
 

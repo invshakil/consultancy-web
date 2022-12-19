@@ -6,16 +6,30 @@
     </div>
     @include('pages.home.partial.carousal')
     <div class="lg:px-32 px-2 carousalD">
-        <div class="text-center py-10 px-2">
-            <h2 class="text-4xl text-mainBlue"> OUR JOB OFFERS</h2>
-            <p class="text-cancel">Delivering excellence to all areas of our focus</p>
+{{--        <div class="text-center py-10 px-2">--}}
+{{--            <h2 class="text-4xl text-mainBlue"> OUR JOB OFFERS</h2>--}}
+{{--            <p class="text-cancel">Delivering excellence to all areas of our focus</p>--}}
+{{--        </div>--}}
+{{--        @include('pages.home.partial.jobs')--}}
+{{--        <div class="text-center py-10 mt-10 px-2">--}}
+{{--            <h2 class="text-4xl text-mainBlue"> STUDY IN YOUR DREAM COUNTRY</h2>--}}
+{{--            <p class="text-cancel">Delivering excellence to all areas of our focus</p>--}}
+{{--        </div>--}}
+{{--        @include('pages.home.partial.study')--}}
+        <div class="flex justify-between px-10">
+            <div class="mt-24 w-1/2">
+                <h2 class="text-xl text-lightGreen font-bold uppercase tracking-widest">Fly For Your Perfect Job Abroad</h2>
+                <hr class="my-2 h-px bg-whiteDark border-0">
+                @include('components.jobFlowChart')
+            </div>
+            <div class="mt-10 w-1/2">
+                <h2 class="text-xl text-lightBlue font-bold uppercase tracking-widest">Study In your dream University</h2>
+                <hr class="my-2 h-px bg-whiteDark border-0">
+
+                @include('components.studyFlowchart')
+            </div>
         </div>
-        @include('pages.home.partial.jobs')
-        <div class="text-center py-10 mt-10 px-2">
-            <h2 class="text-4xl text-mainBlue"> STUDY IN YOUR DREAM COUNTRY</h2>
-            <p class="text-cancel">Delivering excellence to all areas of our focus</p>
-        </div>
-        @include('pages.home.partial.study')
+
         <div class="">
             @foreach($news as $id=> $info)
                 <div class="newsSection">
