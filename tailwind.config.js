@@ -23,6 +23,7 @@ module.exports = {
             'disableBlue': '#7d83b2',
             'midnight': '#121063',
             'text': '#282828',
+            'text2': '#b21919',
             'metal': '#8f8eb7',
             'tahiti': '#59d5a4',
             'lightGreen': '#2da676',
@@ -38,7 +39,7 @@ module.exports = {
             'green': '#20A100',
             'bubble-gum': '#e854d0',
             'bermuda': '#78dcca',
-            'setMIX': '#8eb0aa',
+            'setMIX': '#80d2c4',
         },
         extend: {
 

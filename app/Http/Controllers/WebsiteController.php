@@ -181,6 +181,13 @@ class WebsiteController extends Controller
         return response('sent', 201);
     }
 
+    public function contactStudy(Request $request)
+    {
+        $this->sendMailStudy($request);
+        $this->seo($this->baseSeoData);
+        return response('sent mail', 201);
+    }
+
     private function sendMail($request)
     {
 //        dd($request->input());
@@ -193,6 +200,25 @@ class WebsiteController extends Controller
         ];
 
         \Mail::send('email.contact-admin', $data, function ($message) use ($data) {
+            $message->to(env('RECEIVER_EMAIL'))
+                ->from($data['email'], $data['name'])
+                ->subject($data['subject']);
+        });
+    }
+
+    private function sendMailStudy($request)
+    {
+//        dd($request->input());
+        $data = [
+            'name' => $request->input('name'),
+            'hello' => 'Hello Admin!',
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'whatsapp' => $request->input('whatsapp'),
+            'subject' => 'New E-Mail Received For ' . env('APP_NAME'),
+        ];
+
+        \Mail::send('email.contact-study', $data, function ($message) use ($data) {
             $message->to(env('RECEIVER_EMAIL'))
                 ->from($data['email'], $data['name'])
                 ->subject($data['subject']);

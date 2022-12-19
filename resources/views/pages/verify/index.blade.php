@@ -44,8 +44,9 @@
     <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script>
+        const API = '{{ env('APIKEY') }}';
         const firebaseConfig = {
-            apiKey: "AIzaSyCvWHpApwhzTMUlkV2b95lt1XJwxQxZHu8",
+            apiKey: API,
             authDomain: "career-challangers.firebaseapp.com",
             projectId: "career-challangers",
             storageBucket: "career-challangers.appspot.com",

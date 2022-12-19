@@ -196,8 +196,6 @@
             };
         }
         let myInput = document.getElementById('autoSubmitForm');
-        console.log(myInput)
-
         myInput.addEventListener('input', debounce( () => {
             document.autoSubmitForm.submit()
         }, 4000))

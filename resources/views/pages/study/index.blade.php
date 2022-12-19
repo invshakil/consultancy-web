@@ -5,7 +5,7 @@
         <div class="header-study flex justify-between">
             <h2 class="text-4xl text-whiteDark tracking-wider font-bold">Study Abroad</h2>
 
-            <form id="sendForm" class="form-study flex flex-col px-6 py-8 submit rounded-sm" onsubmit="process(event)"
+            <form id="sendForm" class="form-study flex flex-col px-2 py-4 submit rounded-sm" onsubmit="process(event)"
                   method="post">
                 {{--                <p>Enter your phone number:</p>--}}
                 <input id="name" type="text" name="name" placeholder="Name"/>
@@ -16,23 +16,20 @@
                      style="text-shadow:0 0 black;margin: 1px 0;">
                     <p class="mr-2">Same whatsapp number?</p>
                     <input id="same" type="checkbox"/>
-                    {{--                    <div class="flex justify-center items-center content-center">--}}
-                    {{--                        <input type="radio" id="whatsapp_mobile_yes" name="whatsapp_mobile" value="yes">--}}
-                    {{--                        <label class="mx-1">Yes</label><br>--}}
-                    {{--                    </div>--}}
-                    {{--                    <div class="flex justify-center items-center content-center" style="margin-left: 5px">--}}
-                    {{--                        <input type="radio" id="whatsapp_mobile_no" name="whatsapp_mobile" value="no">--}}
-                    {{--                        <label class="mx-1">No</label><br>--}}
-                    {{--                    </div>--}}
                 </div>
                 <input id="whatsapp" type="tel" name="whatsapp" placeholder="Whatsapp Number"/>
                 <input type="submit"
-                       class="btn cursor-pointer bg-lightGreen hover:bg-lightBlue text-white font-bold py-2 px-4"
+                       id="submit"
+                       class="submitStudy btn cursor-pointer bg-lightGreen hover:bg-lightBlue text-white font-bold py-2 px-4"
                        value="Submit"/>
-                <p class="text-red-600 text-sm px-14 py-3" id="error"
-                   style="display: none;font-size: 12px; text-transform: capitalize"></p>
-                {{--                <br>--}}
-
+                <section id="loading" class="send-button" style="height: 20px!important;">
+                    <div id="loading-content"></div>
+                </section>
+                <p class="successMsg hidden text-xs text-center w-full break-all text-lightGreen">
+                   We Will Get Back To You Soon!!</p>
+                <p class="errorMsg hidden text-xs text-center text-text2 ">
+                    Something Went Wrong! Please Try Again!
+                </p>
             </form>
         </div>
 
@@ -58,8 +55,7 @@
             if (input.is(":checked")) {
                 $('#whatsapp').val(phoneInput.getNumber())
                 // $('#whatsapp').css('display', 'none');
-            }
-            else{
+            } else {
                 $('#whatsapp').val('')
             }
         });
@@ -69,8 +65,7 @@
             if (input.is(":checked")) {
                 $('#whatsapp').val(phoneInput.getNumber())
                 // $('#whatsapp').css('display', 'none');
-            }
-            else{
+            } else {
                 $('#whatsapp').val('')
             }
         });
@@ -120,48 +115,62 @@
                 .then((resp) => callback(resp.country));
         }
 
-        function process(event) {
-            event.preventDefault();
-            const phoneNumber = phoneInput.getNumber();
-            let verified = $('#email').val() && $('#number').val() && $('#whatsapp').val() && $('#name').val()
-            let data = new FormData()
-            data.append('name', $('#name').val())
-            data.append('email', $('#email').val())
-            data.append('phone', phoneNumber)
-            data.append('whatsapp', $('#same').is(":checked") ? phoneNumber : $('#whatsapp').val())
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        $(document).ready(function () {
+            $(document).on('click', '.submitStudy', function (e) {
+                e.preventDefault();
+                const phoneNumber = phoneInput.getNumber();
+                let verified = $('#email').val() && $('#number').val() && $('#whatsapp').val() && $('#name').val()
+                let data = {
+                    'name': $('#name').val(),
+                    'email': $('#email').val(),
+                    'phone': phoneNumber,
+                    'whatsapp': $('#same').is(":checked") ? phoneNumber : $('#whatsapp').val()
                 }
-            });
-            if (verified) {
-                console.log('data', data)
-                // $.ajax({
-                //     type: 'POST',
-                //     url: `/contact-study`,
-                //     data: data,
-                //     dataType: 'json',
-                //     success: function (response) {
-                //         console.log('response', response.status)
-                //         // localStorage.removeItem('phone')
-                //         $('.successMsg').show()
-                //         $("#cv-form").trigger("reset")
-                //     },
-                //     error: function (XMLHttpRequest, textStatus, errorThrown) {
-                //         $('.errorMsg').show()
-                //     }
-                // })
-            } else {
-                ['name', 'email', 'whatsapp', 'number'].map(k => {
-                    if ($(`#${k}`).val()) {
-                        $(`#${k}`).css('border', '2px solid green');
-                    } else {
-                        $(`#${k}`).css('border', '1px solid red');
+                showLoading()
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
-                })
-            }
-        }
+                });
+                if (verified) {
+                    // console.log('data', data)
+                    $('#submit').css({display: 'none'})
+                    $.ajax({
+                        type: 'POST',
+                        url: `/contact-study`,
+                        data: data,
+                        dataType: 'json',
+                        success: function (response) {
+                            hideLoading()
+                            $("#sendForm").trigger("reset")
+                            $('#submit').css({display: 'block'})
+                            $('.successMsg').show()
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            if (XMLHttpRequest.status === 201) {
+                                hideLoading()
+                                $('.successMsg').show()
+                                $("#sendForm").trigger("reset")
+                                $('#submit').css({display: 'block'})
+                            } else {
+                                hideLoading()
+                                $('.errorMsg').show()
+                                $('#submit').css({display: 'block'})
+                            }
+
+                        }
+                    })
+                } else {
+                    ['name', 'email', 'whatsapp', 'number'].map(k => {
+                        if ($(`#${k}`).val()) {
+                            $(`#${k}`).css('border', '2px solid green');
+                        } else {
+                            $(`#${k}`).css('border', '1px solid red');
+                        }
+                    })
+                }
+            })
+        })
 
         $(`#name`).on('input', function () {
             const input = $(this);
@@ -171,6 +180,16 @@
                 input.css('border', '1px solid red');
             }
         });
+
+        function showLoading() {
+            document.querySelector('#loading').classList.add('loading');
+            document.querySelector('#loading-content').classList.add('loading-content');
+        }
+
+        function hideLoading() {
+            document.querySelector('#loading').classList.remove('loading');
+            document.querySelector('#loading-content').classList.remove('loading-content');
+        }
 
     </script>
 
@@ -196,8 +215,9 @@
         .form-study {
             background: rgb(25, 178, 117, .1);
             text-shadow: 0 0 black;
-            /*position: relative;*/
-            margin-top: -15vh;
+            position: relative;
+            margin-top: -18vh;
+            height: 285px;
             margin-right: 2%;
         }
 

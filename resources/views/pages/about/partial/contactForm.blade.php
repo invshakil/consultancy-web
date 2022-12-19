@@ -78,7 +78,7 @@
                     }
                 });
                 if (verified) {
-                    $('#submit').css({ opacity: 0 })
+                    $('#submit').css({ display: 'none' })
                     showLoading()
                     $.ajax({
                         type: 'POST',
@@ -88,6 +88,7 @@
                         success: ()=> {
                             // console.log('response', response)
                             $('.successMsg').show()
+                            hideLoading()
                             $("#contact-form").trigger("reset")
                         },
                         error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -95,12 +96,12 @@
                                 $('.successMsg').show()
                                 $("#contact-form").trigger("reset")
                                 hideLoading()
-                                $('#submit').css({ opacity: 100 })
+                                $('#submit').css({ display: 'block' })
                             }
                             else{
                                 hideLoading()
                                 $('.errorMsg').show()
-                                $('#submit').css({ opacity: 100 })
+                                $('#submit').css({ display: 'block' })
                             }
                         }
                     })

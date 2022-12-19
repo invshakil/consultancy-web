@@ -13,10 +13,15 @@
 
 <h2 style="color: black!important;">{{$hello}}</h2>
 
-<p style="font-size: 13px; font-weight: 500;">We have a new email from: {{$name}}</p>
+<p style="font-size: 13px; font-weight: 500;color: #1e1862!important;">{{$name}} is Interested in studying abroad.They are seeking contact.</p>
 <hr/>
 
-<p style="font-size: 16px; font-weight: 500;"> {!! nl2br($body) !!}
+<p style="font-size: 16px; font-weight: 500;color: #212121!important;">
+    their phone number: {{$phone}}
+{{--    <span><a style="font-size: 14px; color: #18099d" href="{{$link}}">{{$link}}</a></span>--}}
+</p>
+<p style="font-size: 16px; font-weight: 500;color: #363636!important;">
+    their whatsapp number: {{$whatsapp}}
 {{--    <span><a style="font-size: 14px; color: #18099d" href="{{$link}}">{{$link}}</a></span>--}}
 </p>
 {{--<p style="font-size: 13px; font-weight: 500; color: #042c06">{{$contact}} {{ $email }}</p>--}}
