@@ -12,7 +12,7 @@
                 <input id="number" type="tel" name="number"/>
 
                 <input id="email" type="email" name="email" placeholder="Email"/>
-                <div class="flex justify-center text-mainBlue py-2 text-xs bg-white"
+                <div class="flex justify-start text-mainBlue pl-3 py-2 text-xs bg-white"
                      style="text-shadow:0 0 black;margin: 1px 0;">
                     <p class="mr-2">Same whatsapp number?</p>
                     <input id="same" type="checkbox"/>
@@ -126,13 +126,13 @@
                     'phone': phoneNumber,
                     'whatsapp': $('#same').is(":checked") ? phoneNumber : $('#whatsapp').val()
                 }
-                showLoading()
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
                 if (verified) {
+                    showLoading()
                     // console.log('data', data)
                     $('#submit').css({display: 'none'})
                     $.ajax({
