@@ -1,11 +1,11 @@
 <nav class="w-screen header fixed" style="min-height: 10vh;z-index: 100!important;">
     <div class="cutCorner absolute">
         <div class="pt-3 pl-5 inline-flex">
-            <img src="{{asset('assets/images/ccLogo.png')}}"
+            <img src="{{asset('assets/images/ccLogo2.png')}}"
                  style="margin-left: 4vw; height: 7vh; object-fit: contain"/>
             <div class="flex flex-col">
                 <span class="text-2xl text-mainBlue font-bold uppercase"
-                      style="font-family: 'Agency FB',cursive; transform: rotate(-2deg)">Career Challengers</span>
+                      style="font-family: 'Agency FB',cursive;">Career Challengers</span>
                 <hr class="h-px bg-lightGreen border-0">
                 <span class="text-cancel text-xs" style="font-family: cursive">To chnage People's Lives</span>
             </div>
