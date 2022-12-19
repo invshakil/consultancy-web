@@ -1,24 +1,20 @@
 <div>
     <h1 class="section-header">Contact</h1>
-    <div class="contact-wrapper">
+    <div class="lg:flex justify-center lg:px-40 px-10">
+        <div>
         <form id="contact-form" class="form-horizontal contact-form" role="form">
             <div class="form-group">
-                <div class="col-sm-12">
-                    <input type="text" class="form-control border-grey focus:border-lightGreen focus:ring-0" id="name"
-                           placeholder="NAME" name="name" value="">
-                </div>
+                <input type="text" class="my-1 lg:w-96 w-full border-grey focus:border-lightGreen focus:ring-0"
+                       id="name"
+                       placeholder="Name..." name="name" value="">
             </div>
             <div class="form-group">
-                <div class="col-sm-12">
-                    <input type="email" class="form-control border-grey focus:border-lightGreen focus:ring-0" id="email"
-                           placeholder="EMAIL" name="email" value="">
-                </div>
+                <input type="email" class="lg:w-96 w-full my-1 border-grey focus:border-lightGreen focus:ring-0"
+                       id="email"
+                       placeholder="Email..." name="email" value="">
             </div>
-            <textarea class="form-control border-grey focus:border-lightGreen focus:ring-0" rows="6"
-                      placeholder="MESSAGE" id="message" name="message"></textarea>
-            <button class="btn send-button btn-primary px-4 py-2 bg-lightBlue text-white hover:bg-lightGreen rounded-full" id="submit" type="submit">
-                SEND
-            </button>
+            <textarea class="border-grey lg:w-96 w-full my-1 focus:border-lightGreen focus:ring-0" rows="6"
+                      placeholder="Your Message..." id="message" name="message"></textarea>
             <section id="loading" class="send-button">
                 <div id="loading-content"></div>
             </section>
@@ -28,31 +24,60 @@
                 Something Went Wrong! Please Try Again!
             </p>
         </form>
-
-        <div class="direct-contact-container">
+            <input type="submit"
+                   class="submitForm cursor-pointer lg:w-96 w-full px-4 py-2 my-1 bg-lightBlue text-white hover:bg-lightGreen rounded-full"
+                   id="submit" value="Send Message"
+            />
+        </div>
+        <div class="lg:ml-20 ml-10 my-10">
             <ul class="contact-list">
-                <li class="list-item"><i class="fa fa-map-marker fa-2x"><span
-                            class="contact-text place">Dhaka, Bangladesh</span></i></li>
-                <li class="list-item"><i class="fa fa-phone fa-2x"><span class="contact-text phone"><a
-                                href="tel:1-212-555-5555" title="Give me a call">{{env('PHONE_NUMBER')}}</a></span></i></li>
-                <li class="list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a
-                                href="mailto:{{env('RECEIVER_EMAIL')}}" title="Send me an email">{{env('RECEIVER_EMAIL')}}</a></span></i></li>
+                <li class="list-item">
+                    <em class="fa fa-map-marker fa-2x">
+                        <span
+                            class="place text-lightGreen lg:text-lg md:text-sm w-full">36/A, Shegunbagicha, Dhaka, Bangladesh
+                        </span>
+                    </em>
+                </li>
+                <li class="list-item">
+                    <em class="fa fa-phone fa-2x">
+                        <span class="text-lightGreen lg:text-lg md:text-sm phone">
+                            <a
+                                href="tel:1-212-555-5555" title="Give me a call">{{env('PHONE_NUMBER')}}
+                            </a>
+                        </span>
+                    </em>
+                </li>
+                <li class="list-item"><em class="fa fa-envelope fa-2x">
+                        <span class="text-lightGreen lg:text-lg md:text-sm gmail">
+                            <a href="mailto:{{env('RECEIVER_EMAIL')}}"
+                               title="Send me an email">{{env('RECEIVER_EMAIL')}}
+                            </a>
+                        </span>
+                    </em>
+                </li>
             </ul>
             <hr>
             <ul class="social-media-list">
-                <li><a href="{{env('FACEBOOK')}}" target="_blank" class="contact-icon">
+                <a href="{{env('FACEBOOK')}}" title="Facebook" target="_blank" class="contact-icon">
+                    <li>
                         <i class="fa fa-facebook" aria-hidden="true"></i>
-                    </a>
-                </li>
-                <li><a href="{{env('LINKEDIN')}}" target="_blank" class="contact-icon">
-                        <i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                </li>
-                <li><a href="{{env('TWITTER')}}" target="_blank" class="contact-icon">
-                        <i class="fa fa-twitter" aria-hidden="true"></i></a>
-                </li>
-                <li><a href="{{env('INSTAGRAM')}}" target="_blank" class="contact-icon">
-                        <i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </li>
+                    </li>
+                </a>
+                <a href="{{env('LINKEDIN')}}" target="_blank" title="LinkedIn" class="contact-icon">
+                    <li>
+                        <i class="fa fa-linkedin" aria-hidden="true"></i>
+                    </li>
+                </a>
+                <a href="{{env('TWITTER')}}" target="_blank" title="Twitter" class="contact-icon">
+                    <li>
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                    </li>
+                </a>
+                <a href="{{env('INSTAGRAM')}}" target="_blank" title="Instagram" class="contact-icon">
+                    <li>
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                    </li>
+                </a>
             </ul>
             <hr>
             <div class="copyright mt-2">&copy; ALL OF THE RIGHTS RESERVED</div>
@@ -62,7 +87,7 @@
 
     <script>
         $(document).ready(function () {
-            $(document).on('submit', '.contact-form', function (e) {
+            $(document).on('click', '.submitForm', function (e) {
                 e.preventDefault()
                 let verified = $('#email').val() && $('#message').val()
 
@@ -78,30 +103,29 @@
                     }
                 });
                 if (verified) {
-                    $('#submit').css({ display: 'none' })
+                    $('#submit').css({display: 'none'})
                     showLoading()
                     $.ajax({
                         type: 'POST',
                         url: `/contact-mail`,
                         data: data,
                         dataType: 'json',
-                        success: ()=> {
+                        success: () => {
                             // console.log('response', response)
                             $('.successMsg').show()
                             hideLoading()
                             $("#contact-form").trigger("reset")
                         },
                         error: function (XMLHttpRequest, textStatus, errorThrown) {
-                            if(XMLHttpRequest.status===201){
+                            if (XMLHttpRequest.status === 201) {
                                 $('.successMsg').show()
                                 $("#contact-form").trigger("reset")
                                 hideLoading()
-                                $('#submit').css({ display: 'block' })
-                            }
-                            else{
+                                $('#submit').css({display: 'block'})
+                            } else {
                                 hideLoading()
                                 $('.errorMsg').show()
-                                $('#submit').css({ display: 'block' })
+                                $('#submit').css({display: 'block'})
                             }
                         }
                     })
@@ -149,12 +173,6 @@
     </script>
 
     <style>
-
-        #contact {
-            width: 100%;
-            height: 100%;
-        }
-
         .section-header {
             text-align: center;
             margin: 0 auto;
@@ -165,55 +183,6 @@
             letter-spacing: 6px;
         }
 
-        .contact-wrapper {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            /*margin-left: 50px;*/
-            padding: 0 20%;
-            margin: 20px auto 100px auto;
-            /*padding: 20px;*/
-            position: relative;
-
-            /*max-width: 840px;*/
-        }
-
-        /* Left contact page */
-        .form-horizontal {
-            /*float: left;*/
-            /*max-width: 400px;*/
-            font-family: 'Lato';
-            font-weight: 400;
-        }
-
-        .form-control,
-        textarea {
-            width: 30vw;
-            margin: 2px;
-            padding: 5px 10px;
-            background-color: #d5d5d5;
-            color: #000000;
-            /*letter-spacing: 1px;*/
-        }
-
-        .form-control,
-        textarea:focus {
-            outline: none;
-        }
-
-        .send-button {
-            margin-top: 15px;
-            height: 34px;
-            width: 30vw;
-            overflow: hidden;
-            transition: all .2s ease-in-out;
-        }
-        /* Begin Right Contact Page */
-        .direct-contact-container {
-            /*max-width: 400px;*/
-        }
-
-        /* Location, Phone, Email Section */
         .contact-list {
             list-style-type: none;
             margin-left: -30px;
@@ -225,47 +194,29 @@
             color: #4a4b62;
         }
 
-        .contact-text {
-            font: 300 18px 'Lato', sans-serif;
-            letter-spacing: 2px;
-            color: #de5a06;
-        }
-
         .place {
-            margin-left: 62px;
+            margin-left: 22px;
         }
 
         .phone {
-            margin-left: 56px;
+            margin-left: 15px;
         }
 
         .gmail {
-            margin-left: 53px;
+            margin-left: 15px;
         }
-
-        .contact-text a {
-            color: #de5a06;
-            text-decoration: none;
-            transition-duration: 0.2s;
-        }
-
-        .contact-text a:hover {
-            color: #2da676;
-            text-decoration: none;
-        }
-
 
         /* Social Media Icons */
         .social-media-list {
             position: relative;
-            font-size: 22px;
+            font-size: 18px;
             text-align: center;
             width: 100%;
             margin: 0 auto;
             padding: 0;
         }
 
-        .social-media-list li a {
+        .social-media-list a li {
             color: #fff;
         }
 
@@ -307,7 +258,7 @@
             transition-timing-function: cubic-bezier(0.37, 0.74, 0.15, 1.65);
         }
 
-        .social-media-list li:hover a {
+        .social-media-list a:hover li {
             color: #19b275;
         }
 
@@ -324,81 +275,38 @@
 
         /* Begin Media Queries*/
         @media screen and (max-width: 850px) {
-            .contact-wrapper {
-                display: flex;
-                flex-direction: column;
-            }
-            .form-control, textarea {
-                width: 50vw;
-                margin: 0 auto;
-            }
-            .direct-contact-container, .form-horizontal {
-                margin: 0 auto;
-            }
-
-            .direct-contact-container {
-                margin-top: 60px;
-                max-width: 300px;
-            }
 
             .social-media-list li {
-                height: 60px;
-                width: 60px;
-                line-height: 60px;
+                height: 40px;
+                width: 40px;
+                line-height: 40px;
             }
 
             .social-media-list li:after {
-                width: 60px;
-                height: 60px;
-                line-height: 60px;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
             }
         }
 
         @media screen and (max-width: 569px) {
-
-            .direct-contact-container, .form-wrapper {
-                float: none;
-                margin: 0 auto;
-            }
-
-            .form-control, textarea {
-                width: 70vw;
-                margin: 0 auto;
-            }
-
-
-            .name, .email, textarea {
-                width: 280px;
-            }
-
-            .direct-contact-container {
-                margin-top: 60px;
-                max-width: 280px;
-            }
-
             .social-media-list {
                 left: 0;
             }
 
             .social-media-list li {
-                height: 55px;
-                width: 55px;
-                line-height: 55px;
-                font-size: 2rem;
+                height: 35px;
+                width: 35px;
+                line-height: 35px;
+                font-size: 1rem;
             }
 
             .social-media-list li:after {
-                width: 55px;
-                height: 55px;
-                line-height: 55px;
-            }
-
-        }
-
-        @media screen and (max-width: 410px) {
-            .send-button {
-                width: 99%;
+                width: 35px;
+                height: 35px;
+                line-height: 35px;
             }
         }
+
     </style>
 </div>
