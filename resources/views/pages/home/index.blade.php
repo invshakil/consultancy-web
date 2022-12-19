@@ -34,7 +34,8 @@
             @foreach($news as $id=> $info)
                 <div class="newsSection">
                     @if($info['title']!=='.')
-                        <h2 style="color:#3c9b75;">{{$info['title']}}</h2>
+                        <h2 class="text-3xl text-lightGreen font-bold tracking-widest">{{$info['title']}}</h2>
+                        <hr class="h-px bg-whiteDark my-2 border-0"/>
                         {{--                    <h2 style="color:{{$id%2==0?'#19b275':'#ff5151'}};">{{$info['title']}}</h2>--}}
                     @endif
                     {!! $info['description'] !!}

@@ -7,7 +7,7 @@
                 <span class="text-2xl text-mainBlue font-bold uppercase"
                       style="font-family: 'Agency FB',cursive;">Career Challengers</span>
                 <hr class="h-px bg-lightGreen border-0">
-                <span class="text-cancel text-xs" style="font-family: cursive">To chnage People's Lives</span>
+                <span class="text-cancel text-xs" style="font-family: cursive">To change People's Lives</span>
             </div>
         </div>
     </div>
