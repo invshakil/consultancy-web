@@ -293,10 +293,11 @@ class WebsiteController extends Controller
         return view('pages.verify.index');
     }
 
-    public function study()
+    public function study($slug)
     {
+        $country=$slug;
         $this->seo($this->baseSeoData);
-        return view('pages.study.index');
+        return view('pages.study.index', compact('country'));
     }
 
     public function newsLetters(Request $request): \Illuminate\Http\RedirectResponse

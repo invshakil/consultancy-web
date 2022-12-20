@@ -45,6 +45,9 @@
                         <a class="hover:underline" href="{{ route('article-details', ['slug' => $pageLink['page']['slug']]) }}">{{ $pageLink['page']['title'] }}</a>
                     </li>
                 @endforeach
+                    <li class="mb-4">
+                        <a class="hover:underline" href="{{ route('sitemap') }}">Sitemap</a>
+                    </li>
             </ul>
         </div>
     </div>

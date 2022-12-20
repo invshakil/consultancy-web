@@ -1,5 +1,5 @@
 <div class="mt-3 text-text">
-    <h2 class="text-lightGreen font-bold text-4xl tracking-widest">Why Should You Study Abroad</h2>
+    <h2 class="text-lightGreen font-bold text-4xl tracking-widest">Why Should You Study Abroad ?</h2>
     <hr class="my-3 h-px bg-whiteDark border-0 ">
     <p>
         Choosing to be an overseas student might considerably expand your educational opportunities. Foreign universities in the United States, the United Kingdom,  or Australia have highly reputed institutions, and these three nations are home to a large percentage of the world’s top universities.

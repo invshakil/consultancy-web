@@ -57,7 +57,7 @@ Route::get('sitemap', function () {
     }
 
     return $sitemap->render('xml');
-});
+})->name('sitemap');
 Route::get('/jobs', [WebsiteController::class, 'job'])->name('job');
 Route::get('/study/{country}', [WebsiteController::class, 'study'])->name('study');
 Route::get('/search', [WebsiteController::class, 'searchArticle'])->name('search');

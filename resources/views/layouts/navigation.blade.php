@@ -76,7 +76,7 @@
                                                class="block px-4 py-2 hover:bg-mainBlue dark:hover:bg-mainBlue hover:text-white">USA</a>
                                         </li>
                                         <li>
-                                            <a href="{{route('study', ['country'=>'germany'])}}"
+                                            <a href="{{route('study', ['country'=>'uk'])}}"
                                                class="block px-4 py-2 hover:bg-mainBlue dark:hover:bg-mainBlue hover:text-white">
                                                 UK</a>
                                         </li>
