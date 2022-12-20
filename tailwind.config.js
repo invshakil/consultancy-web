@@ -17,7 +17,7 @@ module.exports = {
             current: 'currentColor',
             'white': '#ffffff',
             'whiteDark': '#D9D9D9',
-            'offWhite': '#EBEAE9',
+            'offWhite': '#f5f5f5',
             'yellowLight': '#FFF4C7',
             'mainBlue': '#3c2060',
             'lightBlue': '#4a4b62',
@@ -40,7 +40,7 @@ module.exports = {
             'green': '#20A100',
             'bubble-gum': '#e854d0',
             'bermuda': '#78dcca',
-            'setMIX': '#5aeace',
+            'setMIX': '#61ceb9',
         },
         extend: {
 

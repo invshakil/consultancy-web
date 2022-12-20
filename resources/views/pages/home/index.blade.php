@@ -25,10 +25,10 @@
             <div class="mt-10 w-1/2">
                 <h2 class="text-xl text-lightBlue font-bold uppercase tracking-widest">Study In your dream University</h2>
                 <hr class="my-2 h-px bg-whiteDark border-0">
-
                 @include('components.studyFlowchart')
             </div>
         </div>
+        @include('components.brag')
 
         <div class="">
             @foreach($news as $id=> $info)
@@ -42,7 +42,7 @@
                 </div>
             @endforeach
         </div>
-        @include('components.blogs',['articles'=>$featuredPosts])
+        @include('components.card.blogs',['articles'=>$featuredPosts])
         @include('components.getIinTouch')
     </div>
     <style>

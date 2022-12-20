@@ -22,6 +22,7 @@
         @elseif($country=='usa')
             @include('pages.study.partial.usa')
         @endif
+        @include('components.brag')
         @include('components.getIinTouch')
     </div>
 
@@ -51,8 +52,6 @@
             background-position: center;
             background-repeat: no-repeat;
             filter: blur(4px);
-            /*z-index: -1!important;*/
-            /*mask-image: rgba(-40deg ,244,233,211.1);*/
         }
 
         .header-study {

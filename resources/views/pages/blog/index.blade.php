@@ -39,7 +39,7 @@
                 <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
                     <h2 class="mb-4 text-3xl lg:text-4xl font-bold text-lightGreen tracking tracking-widest">Featured Posts</h2>
                 </div>
-                @include('components.blogs',['articles'=>$featuredArticles])
+                @include('components.card.blogs',['articles'=>$featuredArticles])
                 <div/>
             </div>
 

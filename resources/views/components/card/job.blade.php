@@ -3,7 +3,7 @@
         <div class="lg:flex justify-between my-2">
             <h2 class="text-lightGreen lg:text-left text-center md:text-2xl text-xl pb-2 font-bold px-3 w-screen break-all">{{$title}}</h2>
             <a href="{{route('verify', ['id' => $code])}}"
-               class="bg-lightGreen text-center md:text-lg font-medium rounded-full px-5 py-2 text-white ml-36">
+               class="bg-lightGreen text-center md:text-lg font-medium hover:bg-lightBlue rounded-full px-5 py-2 text-white ml-36">
                 Apply
             </a>
         </div>
@@ -49,7 +49,7 @@
         <p class="jobTitle">Role & Responsibilities:</p>
         <p class="font-sm jobDesc">{{$responsibility}}</p>
     </div>
-    <div class="md:px-14 px-8 py-2 bg-tahiti">
+    <div class="md:px-14 px-8 py-2 bg-lightBlue">
         <p class="text-white">Basic Salary: <span class="font-semibold">{{$salary}}</span></p>
     </div>
 </div>

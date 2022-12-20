@@ -9,7 +9,7 @@
     <div class="text-center md:px-16 px-2 py-6">
         {{--        {{$jobs[0]}}--}}
         {{--            FILTER--}}
-        <form class="grid lg:grid-cols-10 sm:grid-cols-4 gap-5 px-5 bg-mainBlue py-2 rounded rounded-md"
+        <form class="grid lg:grid-cols-10 sm:grid-cols-4 gap-5 px-5 bg-lightBlue py-2 rounded rounded-md"
               style="margin-top:10vh"
         >
             <input name="search" required class="p-3 lg:col-span-3 sm:col-span-4" type="search"
@@ -51,13 +51,13 @@
         {{--            FILTER--}}
         <div class="lg:flex justify-between md:block py-10">
             <form name="autoSubmitForm" id="autoSubmitForm" class="lg:w-3/12 md:w-screen lg:mr-3 mb-5 ">
-                <div class="bg-mainBlue px-4 py-5">
+                <div class="bg-tahiti px-4 py-5">
 {{--                    <p class="text-lightGreen font-bold text-lightGreen text-sm bg-mainBlue py-2">Select Desired Filters, Then Apply</p>--}}
 {{--                    <hr/>--}}
 {{--                    <br/>--}}
                     <div class="flex text-white justify-between">
                         <p type="submit" class="rounded-full px-5 py-2">Filter</p>
-                        <a href="{{route('job')}}" class="rounded-full bg-lightBlue px-3 py-2">Clear All</a>
+                        <a href="{{route('job')}}" class="rounded-full bg-tahiti px-3 py-2">Clear All</a>
                     </div>
                     <div class="bg-white text-left px-4 py-5 my-4">
                         <h3>Locations</h3>
@@ -185,6 +185,8 @@
         <div class="flex justify-center items-center content-center">
             {!! $jobs->links() !!}
         </div>
+{{--        @include('components.brag')--}}
+        @include('components.getIinTouch')
     </div>
 
     <script>
