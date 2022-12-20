@@ -1,10 +1,10 @@
 @extends('master')
 @section('content')
     <div class="cvPage-header"></div>
-    <div class="cvPage xl:px-10 px-2 xl:pl-32 py-2" style="padding-top: 10vh">
+    <div class="cvPage xl:px-10 px-2 xl:pl-32 py-2" style="padding-top: 9vh!important;">
         <div class="xl:ml-96 bg-mainBlue xl:px-12 px-3 py-5 form-cv rounded-md xl:w-8/12">
             <div class="w-44 mx-auto">
-                <h2 class="text-center text-white border-b-2 border-b-white font-bold tracking-wider">SUBMIT
+                <h2 class="text-center text-lg text-white border-b-2 border-b-white font-bold tracking-wider">SUBMIT
                     RESUME</h2>
                 {{--                <div class="flex justify-around text-white">--}}
                 {{--                    <input type="radio" id="worker" name="type" value="worker">--}}
@@ -95,9 +95,9 @@
                         type="submit">Submit
                 </button>
             </form>
-            <p class="successMsg hidden text-xl text-center text-lightGreen font-extrabold bg-whiteDark px-5 py-3 my-5">
+            <p style="display: none" class="successMsg text-xl text-center text-lightGreen font-extrabold bg-whiteDark px-5 py-3 my-5">
                 Your CV Has Been Submitted! We Will Get Back To You Soon!!</p>
-            <p class="errorMsg hidden text-xl text-center text-white font-extrabold bg-cancel px-5 py-3 my-5">
+            <p style="display: none" class="errorMsg text-xl text-center text-white font-extrabold bg-cancel px-5 py-3 my-5">
                 Something Went Wrong! Please Try Again!
             </p>
         </div>

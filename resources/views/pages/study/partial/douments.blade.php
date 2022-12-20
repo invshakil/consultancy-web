@@ -30,10 +30,10 @@
     </p>
     <h2 class="text-lightGreen font-bold text-4xl tracking-widest">Find What You Want</h2>
     <hr class="my-3 h-px bg-whiteDark border-0 ">
-    <h1 class="">Once you have selected the universities/courses based on the geographical areas or the subject, you can see how
+    <h4 class="">Once you have selected the universities/courses based on the geographical areas or the subject, you can see how
         far they match with the criteria that you have decided. This will help you make a comparison between your
         choices.
-    </h1>
+    </h4>
     <p class="leading-loose">Look for the following information to make an informed comparison between colleges:</p>
     <ul class="leading-loose ml-10 py-3 tracking-wider" style="list-style: unset;">
         <li >University ranking</li>

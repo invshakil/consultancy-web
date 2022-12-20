@@ -18,7 +18,7 @@
                 {{--                <br>--}}
 
             </form>
-            <div style="margin-top: 10px;" id="verifyForm" class="pb-24 px-52 pt-4 hidden">
+            <div style="margin-top: 10px; display: none" id="verifyForm" class="pb-24 px-52 pt-4">
                     <p class="text-sm text-mainBlue mb-3">A verification code was sent to you phone</p>
                     <form>
                         <input type="text" id="verificationCode" class="form-control"

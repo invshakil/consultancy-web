@@ -38,19 +38,19 @@
     </div>
 
     <div class="md:px-14 px-8 pb-5 lg:inline-flex justify-start sm:block">
-        <h2 class="jobTitle">Job Description:</h2>
+        <p class="jobTitle">Job Description:</p>
         <p class=" font-sm jobDesc">{{$description}}</p>
     </div>
     <div class="md:px-14 px-8 pb-5 lg:inline-flex justify-start sm:block">
-        <h2 class="jobTitle">Knowledge & Qualification:</h2>
+        <p class="jobTitle">Knowledge & Qualification:</p>
         <p class=" font-sm jobDesc"> {{$quality}}</p>
     </div>
     <div class="md:px-14 px-8 pb-4 lg:inline-flex justify-start sm:block">
-        <h2 class="jobTitle">Role & Responsibilities:</h2>
+        <p class="jobTitle">Role & Responsibilities:</p>
         <p class="font-sm jobDesc">{{$responsibility}}</p>
     </div>
-    <div class="md:px-14 px-8 py-2 bg-lightBlue">
-        <p class="text-tahiti">Basic Salary: <span class="font-semibold">{{$salary}}</span></p>
+    <div class="md:px-14 px-8 py-2 bg-tahiti">
+        <p class="text-white">Basic Salary: <span class="font-semibold">{{$salary}}</span></p>
     </div>
 </div>
 <style>

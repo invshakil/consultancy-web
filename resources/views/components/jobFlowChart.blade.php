@@ -16,7 +16,8 @@
                             {{--                            <p class="pb-4 text-sm text-text">University of DVI (1997 - 2001)</p>--}}
                             {{--                            <hr />--}}
                             <p id="content8"
-                               class="text-sm hidden font-medium leading-snug tracking-wide text-text text-opacity-100"
+                               style="display: none"
+                               class="text-sm font-medium leading-snug tracking-wide text-text text-opacity-100"
                             >
                                 The education should be very interactual. Ut tincidunt est ac dolor aliquam sodales.
                                 Phasellus sed mauris hendrerit, laoreet sem in, lobortis mauris hendrerit ante.
@@ -37,7 +38,8 @@
                             {{--                            <p class="pb-4 text-sm text-text">University of DVI (1997 - 2001)</p>--}}
                             {{--                            <hr />--}}
                             <p id="content9"
-                               class="text-sm hidden font-medium leading-snug tracking-wide text-text text-opacity-100"
+                               style="display: none"
+                               class="text-sm font-medium leading-snug tracking-wide text-text text-opacity-100"
                             >
                                 The education should be very interactual. Ut tincidunt est ac dolor aliquam sodales.
                                 Phasellus sed mauris hendrerit, laoreet sem in, lobortis mauris hendrerit ante.
@@ -59,7 +61,8 @@
                             {{--                            <p class="pb-4 text-sm text-text">University of DVI (1997 - 2001)</p>--}}
                             {{--                            <hr />--}}
                             <p id="content10"
-                               class="text-sm hidden font-medium leading-snug tracking-wide text-text text-opacity-100"
+                               style="display: none"
+                               class="text-sm font-medium leading-snug tracking-wide text-text text-opacity-100"
                             >The education should be very interactual. Ut tincidunt est ac dolor aliquam sodales.
                                 Phasellus sed mauris hendrerit, laoreet sem in, lobortis mauris hendrerit ante.
                             </p>
@@ -79,7 +82,8 @@
                             {{--                            <p class="pb-4 text-sm text-text">University of DVI (1997 - 2001)</p>--}}
                             {{--                            <hr />--}}
                             <p id="content11"
-                               class="text-sm hidden font-medium leading-snug tracking-wide text-text text-opacity-100"
+                               style="display: none"
+                               class="text-sm font-medium leading-snug tracking-wide text-text text-opacity-100"
                             >
                                 The education should be very interactual. Ut tincidunt est ac dolor aliquam sodales.
                                 Phasellus sed mauris hendrerit, laoreet sem in, lobortis mauris hendrerit ante.
@@ -100,7 +104,8 @@
                             {{--                            <p class="pb-4 text-sm text-text">University of DVI (1997 - 2001)</p>--}}
                             {{--                            <hr />--}}
                             <p id="content12"
-                               class="text-sm hidden font-medium leading-snug tracking-wide text-text text-opacity-100">
+                               style="display: none"
+                               class="text-sm font-medium leading-snug tracking-wide text-text text-opacity-100">
                                 The
                                 education should be very interactual. Ut tincidunt est ac dolor aliquam sodales.
                                 Phasellus sed mauris hendrerit, laoreet sem in, lobortis mauris hendrerit ante.</p>
@@ -120,7 +125,8 @@
                             {{--                            <p class="pb-4 text-sm text-text">University of DVI (1997 - 2001)</p>--}}
                             {{--                            <hr />--}}
                             <p id="content13"
-                               class="text-sm hidden font-medium leading-snug tracking-wide text-text text-opacity-100">
+                               style="display: none"
+                               class="text-sm font-medium leading-snug tracking-wide text-text text-opacity-100">
                                 The
                                 education should be very interactual. Ut tincidunt est ac dolor aliquam sodales.
                                 Phasellus sed mauris hendrerit, laoreet sem in, lobortis mauris hendrerit ante.</p>
