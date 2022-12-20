@@ -121,7 +121,9 @@
                 const scroll = $(window).scrollTop();
                 if (scroll >= 100) {
                     header.addClass("bg-mainBlue");
+                    header.css('transition', 'all .8s')
                     cutCorner.addClass("bg-offWhite");
+                    cutCorner.css('transition', 'all 1.3s')
                     list.removeClass("text-lightGreen");
                     list.removeClass("font-bold");
                     list.removeClass("bg-whiteDark");
@@ -139,17 +141,6 @@
                 }
             });
         });
-
-        // $(window).scroll(function() {
-        //     let scroll = $(window).scrollTop();
-        //     alert('scrolled')
-        //     if (scroll >= 100) {
-        //         $('#offWhite').removeClass('bg-transparent');
-        //         $('#offWhite').addClass('bg-offWhite');
-        //         $('#blue').removeClass('bg-transparent');
-        //         $('#blue').addClass('bg-mainBlue');
-        //     }
-        // });
     </script>
 </nav>
 <style>

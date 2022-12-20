@@ -1,4 +1,4 @@
-<div class="w-screen -mt-5 -ml-4">
+<div class="w-screen -mt-4 -ml-5">
     <div id="default-carousel" class="relative duration-700 mb-4 mt-4 ml-4" data-carousel="static">
         <!-- Carousel wrapper -->
         <div class="overflow-hidden relative h-56 rounded-lg h-screen">
