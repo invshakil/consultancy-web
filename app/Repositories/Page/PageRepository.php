@@ -80,7 +80,7 @@ class PageRepository implements PageInterface
             'title' => $request->input('title'),
             'slug' => $this->slugify($request->input('title')),
             'excerpt' => $request->input('excerpt'),
-            'description' => saveTextEditorImage($request->input('description')),
+            'description' => saveTextEditorImage($request->input('description'),$request->input('title')),
             'published' => filter_var($request->input('published'), FILTER_VALIDATE_BOOLEAN),
         ];
 

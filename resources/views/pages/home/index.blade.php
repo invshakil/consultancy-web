@@ -55,21 +55,6 @@
             border-top-left-radius: 10%;
             /*background-color: rgba(255, 255, 255, 0.1)*/
         }
-
-        blockquote {
-            font-weight: 700;
-            border-left: 15px solid #426c5b;
-            background: rgba(114, 114, 114, 0.1);
-            margin: 15px 3%;
-            padding: 10px 15px
-        }
-
-        iframe {
-            width: 94%;
-            margin-left: 3%;
-            min-height: 40vh
-        }
-
         @media screen and (max-width: 800px) {
             .newsSection {
                 padding: 0;

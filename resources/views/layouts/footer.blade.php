@@ -1,55 +1,44 @@
-<div class="border-x-0 border-y-2 border-y-whiteDark bg-offWhite" style="z-index: 1000; position: relative">
-    <div class="grid grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
+<div class="border-x-0 border-y-2 mt-10 border-y-whiteDark bg-offWhite" style="z-index: 1000; position: relative">
+    <div class="grid grid-cols-2 gap-4 py-4 lg:pl-40 pl-10 md:grid-cols-3">
         <div>
-            <h2 class="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">Company</h2>
+            <h2 class="mb-6 text-sm font-semibold text-lightGreen uppercase dark:text-gray-400">Company</h2>
             <ul class="text-gray-500 dark:text-gray-400">
                 <li class="mb-4">
-                    <a href="#" class=" hover:underline">About</a>
+                    <a href="{{route('blog')}}" class="hover:underline">Blog</a>
                 </li>
                 <li class="mb-4">
-                    <a href="#" class="hover:underline">Careers</a>
+                    <a href="{{route('study', ['country'=>'all'])}}" class="hover:underline">Study Modules</a>
                 </li>
                 <li class="mb-4">
-                    <a href="#" class="hover:underline">Brand Center</a>
+                    <a href="{{route('job')}}" class="hover:underline">Job Listing</a>
                 </li>
                 <li class="mb-4">
-                    <a href="#" class="hover:underline">Blog</a>
+                    <a href="{{route('about')}}" class=" hover:underline">About Us</a>
                 </li>
             </ul>
         </div>
         <div>
-            <h2 class="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">Help center</h2>
+            <h2 class="mb-6 text-sm font-semibold text-lightGreen uppercase dark:text-gray-400">Help center</h2>
             <ul class="text-gray-500 dark:text-gray-400">
                 <li class="mb-4">
-                    <a href="#" class="hover:underline">Discord Server</a>
+                    <a href="https://api.whatsapp.com/send?phone={{env('WHATSAPP')}}" class="hover:underline">Whatsapp</a>
                 </li>
                 <li class="mb-4">
-                    <a href="#" class="hover:underline">Twitter</a>
+                    <a href="https://www.facebook.com/messages/t/111237520716053" class="hover:underline">Facebook</a>
                 </li>
                 <li class="mb-4">
-                    <a href="#" class="hover:underline">Facebook</a>
-                </li>
-                <li class="mb-4">
-                    <a href="#" class="hover:underline">Contact Us</a>
+                    <a href="/about/#contact" class="hover:underline">Contact Us</a>
                 </li>
             </ul>
         </div>
+{{--        <div>--}}
+{{--            <h2 class="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">Legal</h2>--}}
+{{--            <ul class="text-gray-500 dark:text-gray-400">--}}
+
+{{--            </ul>--}}
+{{--        </div>--}}
         <div>
-            <h2 class="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">Legal</h2>
-            <ul class="text-gray-500 dark:text-gray-400">
-                <li class="mb-4">
-                    <a href="#" class="hover:underline">Privacy Policy</a>
-                </li>
-                <li class="mb-4">
-                    <a href="#" class="hover:underline">Licensing</a>
-                </li>
-                <li class="mb-4">
-                    <a href="#" class="hover:underline">Terms &amp; Conditions</a>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <h2 class="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">Important</h2>
+            <h2 class="mb-6 text-sm font-semibold text-lightGreen uppercase dark:text-gray-400">Important</h2>
             <ul class="text-gray-500 dark:text-gray-400">
                 @foreach($footerPages as $pageLink)
                     <li class="mb-4">

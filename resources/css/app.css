@@ -30,6 +30,19 @@
     100% { transform: rotate(360deg); }
 }
 
+blockquote {
+    font-weight: 700;
+    border-left: 15px solid #426c5b;
+    background: rgba(114, 114, 114, 0.1);
+    margin: 15px 3%;
+    padding: 10px 15px
+}
+
+iframe {
+    width: 94%;
+    margin-left: 3%;
+    min-height: 40vh
+}
 
 .centerItemsAbsolute {
     position: absolute;
@@ -58,4 +71,11 @@
 textarea:focus, input:focus{
     outline: none;
 }
+
+h1{font-size: 32px!important;}
+h2{font-size: 26px!important;}
+h3{font-size: 22px!important;}
+h4{font-size: 20px!important;}
+h5{font-size: .83em!important;}
+h6{font-size: .75em!important;}
 
