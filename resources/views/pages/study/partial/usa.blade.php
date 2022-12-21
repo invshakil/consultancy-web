@@ -51,16 +51,49 @@
         Students have the option of choosing the term of their study from three main flexible intakes, Spring (January),
         Fall (September) and Summer (May) when they study in USA.
         <br/><br/>
-        <span class="font-bold text-mainBlue">Intake 1:</span> Fall Semester – It commences in August/September and is the major intake.
+        <span class="font-bold text-mainBlue">Intake 1:</span> Fall Semester – It commences in August/September and is
+        the major intake.
         <br/><br/>
-        <span class="font-bold text-mainBlue">Intake 2:</span> Spring Semester – It commences in January/February intake is also available.
+        <span class="font-bold text-mainBlue">Intake 2:</span> Spring Semester – It commences in January/February intake
+        is also available.
         <br/><br/>
-        <span class="font-bold text-mainBlue">Intake 3:</span> Summer Semester – It commences in May/June and is available for selected Courses.
+        <span class="font-bold text-mainBlue">Intake 3:</span> Summer Semester – It commences in May/June and is
+        available for selected Courses.
     </p>
     <hr class="h-px border-0 bg-whiteDark my-2"/>
 
-    <h2 class="text-lightGreen text-center uppercase text-3xl mt-10 font-bold tracking-widest">Top 20 US University (QS Ranking 2022)</h2>
+    <h2 class="text-lightGreen text-center uppercase text-3xl mt-10 font-bold tracking-widest">Eligibility requirements
+        for students in US universities:</h2>
     <hr class="h-px border-0 bg-whiteDark my-2"/>
+    <ul class="leading-loose ml-10 py-3 tracking-wide" style="list-style: unset;">
+        <li>Students must be over 18 years of age.</li>
+        <li>International students can work on-campus up to 20 hours/week or less during the academic terms and
+            full-time during the academic break periods including the summertime.
+        </li>
+        <li>Off-campus employment requires some form of written or documented authorization issued by either the USCIS
+            or OISS.
+        </li>
+        <li>You must be currently in legal status and have been enrolled as a student on a F-1 student visa in the US
+            for a minimum of one academic year to be eligible for any form of off-campus employment.
+        </li>
+    </ul>
+
+    <h2 class="text-lightGreen text-center uppercase text-3xl mt-10 font-bold tracking-widest">US Student Visa Requirements (F1 Visa)</h2>
+    <hr class="h-px border-0 bg-whiteDark my-2"/>
+    <ul class="leading-loose ml-10 py-3 tracking-wide" style="list-style: unset;">
+        <li>A valid passport with a validity date at least six months beyond your period of stay.</li>
+        <li>Recent passport size photograph.</li>
+        <li>Confirmation page of DS-160.</li>
+        <li>Form I -20.</li>
+        <li>Payment of application fees for SEVIS.</li>
+        <li>Application as a non-immigrant.</li>
+        <li>Your University will make you aware of additional requirements if any prior to your application.</li>
+    </ul>
+
+    <h2 class="text-lightGreen text-center uppercase text-3xl mt-10 font-bold tracking-widest">Top 20 US University (QS
+        Ranking 2022)</h2>
+    <hr class="h-px border-0 bg-whiteDark my-2"/>
+
     @include('pages.study.partial.top20Us')
 </div>
 

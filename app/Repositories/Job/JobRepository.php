@@ -68,9 +68,6 @@ class JobRepository
         $job->update($data);
 
 //        if($isPublishedBefore===0 && $request->input('published')===1){
-//            $this->sendMail($job);
-//        }
-//        if($isPublishedBefore===0 && $request->input('published')===1){
 //            $this->sendMailEnglish($job);
 //        }
 
@@ -84,28 +81,6 @@ class JobRepository
         return $job->delete();
     }
 
-    private function sendMail($article)
-    {
-        $subscribers = NewsLetter::all();
-        $data = [
-            'name' => 'Tanventurer',
-            'thanks' => 'সাথে থাকার জন্যে ধন্যবাদান্তে',
-            'hello' => 'প্রিয় সাবস্ক্রাইবার!!',
-            'email' => 'tanvirrezaanik@gmail.com',
-            'contact' => 'আমার সাথে যোগাযোগ করতে পারেন এই ইমেইলে: ',
-            'subject' => 'ট্যানভেঞ্চারে নতুন আর্টিকেল প্রকাশিত হয়েছে',
-            'link' => "tanventurer.com/articles/$article->slug_bn",
-            'body' => 'ট্যানভেঞ্চারারে একটি নতুন আর্টিকেল প্রকাশিত হয়েছে! লেখাটি এখানে পড়তে পারেনঃ '
-        ];
-
-        for ($i = 0; $i < $subscribers->count(); $i++) {
-            \Mail::send('email.contact-template', $data, function ($message) use ($subscribers, $i, $data) {
-                $message->to($subscribers[$i]->email)
-                    ->from($data['email'], $data['name'])
-                    ->subject($data['subject']);
-            });
-        }
-    }
     private function sendMailEnglish($article)
     {
         $subscribers = NewsLetter::all();

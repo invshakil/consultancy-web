@@ -162,10 +162,24 @@ class WebsiteController extends Controller
         $this->baseSeoData['title'] = $this->homePageSeoData['job_title'];
         $this->baseSeoData['description'] = $this->homePageSeoData['job_description'];
         $this->seo($this->baseSeoData);
+        $shareLinks = $this->getShareLinks($jobs);
+
 
         return view('pages.job.index',
-            compact('jobs', 'countries', 'industries', 'requestedCountries')
+            compact('jobs', 'countries', 'industries', 'requestedCountries', 'shareLinks')
         );
+    }
+
+    public function getShareLinks($data){
+        foreach ($data as $d){
+            return Share::page(url()->current(), $d->title)
+                ->facebook()
+                ->twitter()
+                ->linkedin($d->excerpt)
+                ->whatsapp()
+                ->telegram()
+                ->getRawLinks();
+        }
     }
 
     public function resume()

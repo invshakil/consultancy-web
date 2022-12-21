@@ -8,6 +8,12 @@
             <div class=" text-justify">
                 {!! $article['description'] !!}
             </div>
+            <ul class="flex justify-start flex-wrap gap-2 text-sm py-10">
+                <li class="px-4 py-1 text-lightBlue tracking-widest font-bold text-lg">SHARE: </li>
+            @foreach($shareLinks as $key=>$link)
+                    <li class="px-4 py-2 bg-lightGreen hover:bg-mainBlue text-white rounded-full"><a href="{{$link}}" target="_blank" class="pin fab fa-{{$key}}">{{$key}}</a></li>
+                @endforeach
+            </ul>
             <br/>
             <hr/>
             <br/>
