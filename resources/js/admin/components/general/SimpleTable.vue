@@ -23,25 +23,9 @@
                     </v-card-text>
                     </thead>
                     <thead v-else>
-                    <tr>
-                        <td>  {{locale==='en'?articles[0].title_en:articles[0].title_bn}} </td>
-                        <td> {{ articles[0].viewed }}</td>
-                    </tr>
-                    <tr>
-                        <td> {{locale==='en'?articles[1].title_en:articles[1].title_bn}}</td>
-                        <td> {{ articles[1].viewed }}</td>
-                    </tr>
-                    <tr>
-                        <td> {{locale==='en'?articles[2].title_en:articles[2].title_bn}}</td>
-                        <td> {{ articles[2].viewed }}</td>
-                    </tr>
-                    <tr>
-                        <td> {{locale==='en'?articles[3].title_en:articles[3].title_bn}}</td>
-                        <td> {{ articles[2].viewed }}</td>
-                    </tr>
-                    <tr>
-                        <td> {{locale==='en'?articles[4].title_en:articles[4].title_bn}}</td>
-                        <td> {{ articles[2].viewed }}</td>
+                    <tr v-for="(article, index) in articles.slice(0,4)" :key="index">
+                        <td>  {{article.title}} </td>
+                        <td> {{ article.viewed }}</td>
                     </tr>
                     </thead>
                 </template>
@@ -99,8 +83,8 @@ export default {
     methods: {
         getData() {
             this.loading = true;
-
             Api.mostRead().then(res => {
+                console.log('art', res.data.data)
                 this.articles = res.data.data
                 this.loading = false;
             }).catch(err => {
