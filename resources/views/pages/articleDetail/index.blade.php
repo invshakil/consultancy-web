@@ -15,7 +15,7 @@
         </div>
         <div class="lg:w-1/3 w-full lg:ml-16">
             <div class="lg:fixed relative" style="overflow-y: scroll; height: 80vh;">
-                <h2 class="text-2xl" style="margin-top: 1vh;" >Similar Articles</h2>
+                <h2 class="text-3xl text-lightGreen" style="margin-top: 1vh;" >Similar Articles</h2>
                 <hr style="width: 70%;"/>
                 @foreach($similarArticles as $sArticle)
                     <div class="mt-5">
@@ -23,7 +23,7 @@
                             <img src="{{asset($sArticle['image'])}}" class="lg:w-8/12 w-full" style="height: 20vh;border-radius: 6px; object-fit: cover; box-shadow: 2px 5px 7px 2px #383838;" alt=""/>
                             <h2 class="capitalize text-xs mt-2">{{$sArticle['categories'][0]['name']}}</h2>
                             <div class="flex justify-between lg:w-8/12 w-full" >
-                                <h2 class="capitalize text-right tracking-wide font-bold text-mainBlue mb-2">{{$sArticle['title']}}</h2>
+                                <h4 class="capitalize text-right text-lg tracking-wide font-bold text-mainBlue mb-2">{{$sArticle['title']}}</h4>
                             </div>
                         </a>
                     </div>
