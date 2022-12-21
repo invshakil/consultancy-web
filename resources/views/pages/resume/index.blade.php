@@ -151,19 +151,18 @@
                 } else {
                     ['name', 'source', 'exp_in', 'exp_out', 'fileRef', 'jobID', 'file', 'email', 'whatsapp'].map(k => {
                         if ($(`#${k}`).val()) {
-                            $(`#${k}`).css('border', '2px solid green');
+                            $(`#${k}`).css('border', '1px solid green');
                         } else {
                             $(`#${k}`).css('border', '1px solid red');
                         }
                     })
 
                     if (document.getElementById('file').files[0]) {
-                        $(`#fileRef`).css('border', '2px solid green');
+                        $(`#fileRef`).css('border', '1px solid green');
                     } else {
                         $(`#fileRef`).css('border', '1px solid red');
                     }
                 }
-                console.log('data', data)
             })
         })
     </script>
@@ -173,7 +172,7 @@
             $(`#${k}`).on('input', function () {
                 const input = $(this);
                 if (input.val() && input.val() !== null) {
-                    input.css('border', '2px solid green');
+                    input.css('border', '1px solid green');
                 } else {
                     input.css('border', '1px solid red');
                 }
@@ -183,14 +182,14 @@
         $('#whatsapp').on('input', function () {
             const input = $(this);
             if (input.val().length === 11) {
-                input.css('border', '2px solid green');
+                input.css('border', '1px solid green');
             } else {
                 input.css('border', '1px solid red');
             }
         });
         $('#file').on('input', function () {
             if (document.getElementById('file').files[0]) {
-                $('#fileRef').css('border', '2px solid green');
+                $('#fileRef').css('border', '1px solid green');
                 let name=document.getElementById('file').files[0].name
                 let size=document.getElementById('file').files[0].size
                 $('#fileName').text(name+ ' ( ' +(size/1024).toFixed(0)+ ' KB' +' ) ' )
@@ -205,11 +204,11 @@
             const input = $(this);
             if (input.is(":checked")) {
                 $('#whatsapp').val(localStorage.phone)
-                $('#whatsapp').css('border', '2px solid green');
+                $('#whatsapp').css('border', '1px solid green');
             } else {
                 $('#whatsapp').val(input.val())
                 if ($('#whatsapp').val().length === 11) {
-                    $('#whatsapp').css('border', '2px solid green');
+                    $('#whatsapp').css('border', '1px solid green');
                 } else {
                     $('#whatsapp').css('border', '1px solid red');
                 }
@@ -222,7 +221,7 @@
             const emailFormat = re.test($("#email").val());
             const input = $(this);
             if (emailFormat) {
-                input.css('border', '2px solid green');
+                input.css('border', '1px solid green');
             } else {
                 input.css('border', '1px solid red');
             }

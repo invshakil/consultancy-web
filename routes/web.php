@@ -66,6 +66,7 @@ Route::get('/blog', [WebsiteController::class, 'blog'])->name('blog');
 Route::get('/{slug}', [WebsiteController::class, 'articleDetails'])->name('article-details');
 Route::get('/upload-cv/{id}', [WebsiteController::class, 'resume'])->name('upload-cv');
 Route::post('/submit-cv', [WebsiteController::class, 'submitCV'])->name('submit-cv');
+Route::post('/subscribe', [WebsiteController::class, 'subscribe'])->name('subscribe');
 Route::post('/contact-mail', [WebsiteController::class, 'contactMail'])->name('contact-mail');
 Route::post('/contact-study', [WebsiteController::class, 'contactStudy'])->name('contact-study');
 Route::get('/verify/{id}', [WebsiteController::class, 'verify'])->name('verify');

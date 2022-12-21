@@ -1,5 +1,5 @@
 <div class="lg:px-52 px-2 flex justify-center content-center">
-    <a class="mt-5 block p-6 border rounded-md">
+    <a class="mt-5 block p-6 rounded-md">
         <h2 class="mb-2 text-lightBlue gap-2 inline-flex italic tracking-widest text-3xl text-center font-bold tracking-tight">
             <img src="{{asset('assets/images/ccLogo2.png')}}"
                  style=" height: 7vh; object-fit: contain" alt=""/>

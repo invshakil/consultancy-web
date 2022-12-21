@@ -18,9 +18,9 @@
     <section id="loading" class="send-button" style="height: 20px!important;">
         <div id="loading-content"></div>
     </section>
-    <p class="successMsg hidden text-xs text-center w-full break-all p-2.5 text-mainBlue" style="background-color: #679b87;">
+    <p class="successMsg text-xs text-center w-full break-all p-2.5 text-mainBlue" style="background-color: #679b87;display: none; ">
         We Will Get Back To You Soon!!</p>
-    <p class="errorMsg hidden text-xs text-center p-2.5 text-text2 "style="background-color: #eab3b3;">
+    <p class="errorMsg text-xs text-center p-2.5 text-text2 "style="background-color: #eab3b3;display: none; ">
         Something Went Wrong! Please Try Again!
     </p>
 </form>

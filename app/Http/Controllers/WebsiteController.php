@@ -174,6 +174,17 @@ class WebsiteController extends Controller
         return view('pages.resume.index');
     }
 
+    public function subscribe(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|unique:news_letters,email',
+        ]);
+
+        $data=['email'=>$request->input('email'), 'status'=>true];
+        NewsLetter::create($data);
+        return response('subscribed', 201);
+    }
+
     public function contactMail(Request $request)
     {
         $this->sendMail($request);
