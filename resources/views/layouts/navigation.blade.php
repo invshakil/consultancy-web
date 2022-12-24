@@ -1,4 +1,4 @@
-<nav class="w-screen header fixed" style="min-height: 10vh;z-index: 100!important;background: rgba(255,255,255,0.6)">
+<nav class="w-screen header fixed" style="min-height: 10vh;z-index: 100!important;">
     <div class="cutCorner absolute">
         <div class="pt-3 pl-5 inline-flex">
             <img src="{{asset('assets/images/ccLogo2.png')}}"
@@ -30,11 +30,11 @@
         <div class="hidden lg:mt-6 mt-10 w-full md:block md:w-96 mr-44" id="navbar-multi-level">
             <ul style="margin-top: 3vh; margin-bottom: 2vh" class="flex md:mt-0">
                 <li style="z-index: 100!important;"
-                    class="px-3 font-bold tracking-widest text-lg cursor-pointer text-mainBlue li flex items-center"><a
+                    class="px-3 font-bold bg-whiteDark tracking-widest text-lg cursor-pointer text-mainBlue li flex items-center"><a
                         class="hover:text-cancel @if(Request::url() == url('/')) text-cancel @endif"
                         href="{{route('home')}}">HOME</a></li>
 
-                <li class="text-mainBlue text-lg li @if(Request::url() == url('/study')) text-cancel @endif font-bold tracking-widest hover:text-cancel"
+                <li class="text-mainBlue bg-whiteDark text-lg li @if(Request::url() == url('/study')) text-cancel @endif font-bold tracking-widest hover:text-cancel"
                     style="z-index: 100!important;">
                     <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
                             class="px-3 cursor-pointer flex items-center">
@@ -95,17 +95,17 @@
                     </div>
                 </li>
                 <li style="z-index: 100!important;"
-                    class="px-3 text-lg @if(Request::url() == url('/jobs')) text-cancel @endif cursor-pointer font-bold tracking-widest li text-mainBlue flex items-center">
+                    class="px-3 text-lg @if(Request::url() == url('/jobs')) text-cancel @endif bg-whiteDark cursor-pointer font-bold tracking-widest li text-mainBlue flex items-center">
                     <a
                         class="hover:text-cancel " href="{{route('job')}}">JOBS</a>
                 </li>
                 <li style="z-index: 100!important;"
-                    class="px-3 text-lg @if(Request::url() == url('/blog')) text-cancel @endif cursor-pointer font-bold tracking-widest li text-mainBlue flex items-center">
+                    class="px-3 text-lg @if(Request::url() == url('/blog')) text-cancel @endif bg-whiteDark cursor-pointer font-bold tracking-widest li text-mainBlue flex items-center">
                     <a
                         class="hover:text-cancel " href="{{route('blog')}}">BLOG</a>
                 </li>
                 <li style="z-index: 100!important;"
-                    class="px-3 text-lg @if(Request::url() == url('/about')) text-cancel @endif cursor-pointer font-bold tracking-widest li text-mainBlue flex items-center">
+                    class="px-3 text-lg @if(Request::url() == url('/about')) text-cancel @endif bg-whiteDark cursor-pointer font-bold tracking-widest li text-mainBlue flex items-center">
                     <a
                         class="hover:text-cancel " href="{{route('about')}}">CONTACT</a>
                 </li>
@@ -136,7 +136,7 @@
                     list.addClass("text-mainBlue");
                     list.addClass("font-bold");
                     list.addClass("text-lg");
-                    // list.addClass("bg-whiteDark");
+                    list.addClass("bg-whiteDark");
                     header.removeClass("bg-mainBlue");
                     cutCorner.removeClass("bg-offWhite");
                 }

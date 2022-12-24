@@ -2,29 +2,24 @@
     <div id="default-carousel" class="relative duration-700 mb-4 mt-4 ml-4" data-carousel="slide">
         <!-- Carousel wrapper -->
         <div class="overflow-hidden relative h-56 rounded-lg h-screen">
-            <!-- Item 1 -->
             <div class="hidden duration-700 ease-in active" data-carousel-item style="transition: all 2s">
-                <img src="{{asset('assets/images/cs.avif')}}" class="rounded-0" alt="..."
+                <img src="{{asset('assets/images/un4.png')}}" class="rounded-0" alt="..."
                      style="filter: blur(1px); width: 100%; height: 100vh; object-fit: cover">
             </div>
-            <!-- Item 2 -->
             <div class="hidden duration-700 ease-out" data-carousel-item>
-                <img src="{{asset('assets/images/hotel.avif')}}" alt="..."
+                <img src="{{asset('assets/images/civil.jpg')}}" alt="..."
                      style="width: 100%; height: 100vh; object-fit: cover">
             </div>
-            <!-- Item 3 -->
-            <div class="hidden duration-700 ease-in" data-carousel-item>
-                <img src="{{asset('assets/images/health.avif')}}" alt="..."
-                     style="width: 100%; height: 100vh; object-fit: cover">
-            </div>
-            <!-- Item 4 -->
             <div class="hidden duration-700 ease-out" data-carousel-item>
-                <img src="{{asset('assets/images/eng2.avif')}}" alt="..."
+                <img src="{{asset('assets/images/doc.jpg')}}" alt="..."
                      style="width: 100%; height: 100vh; object-fit: cover">
             </div>
-            <!-- Item 5 -->
+            {{--            <div class="hidden duration-700 ease-in" data-carousel-item>--}}
+            {{--                <img src="{{asset('assets/images/hotel.avif')}}" alt="..."--}}
+            {{--                     style="width: 100%; height: 100vh; object-fit: cover">--}}
+            {{--            </div>--}}
             <div class="hidden duration-700 ease-in" data-carousel-item>
-                <img src="{{asset('assets/images/law2.avif')}}" alt="..."
+                <img src="{{asset('assets/images/law.jpg')}}" alt="..."
                      style="width: 100%; height: 100vh; object-fit: cover">
             </div>
         </div>
