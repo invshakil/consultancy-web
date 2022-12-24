@@ -3,7 +3,7 @@
         <h2 class="mb-2 text-lightBlue gap-2 inline-flex italic tracking-widest text-3xl text-center font-bold tracking-tight">
             <img src="{{asset('assets/images/ccLogo2.png')}}"
                  style=" height: 7vh; object-fit: contain" alt=""/>
-            Bangladesh's <span class="text-5xl text-lightGreen">Best </span> Consultancy Agency
+            Bangladesh's <span class="text-5xl text-lightGreen">Number 1 </span> Consultant
         </h2>
         <hr class="h-px border-0 bg-whiteDark my-2"/>
         <p class="text-center text-lightBlue">

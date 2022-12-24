@@ -37,7 +37,7 @@
             </select>
 
             <select name="type[]" class="bg-white p-3 col-span-2">
-                <option value="all" selected>--Collar--</option>
+                <option value="all" selected>--Job Type--</option>
                 <option value="Stuff">Blue Collar</option>
                 <option value="Worker">White Collar</option>
             </select>
@@ -70,20 +70,20 @@
                             </section>
                         @endforeach
                     </div>
-                    <div class="bg-white text-left px-4 py-5 my-4">
-                        <h3>Job Type</h3>
-                        <hr class="my-2"/>
-                        <section>
-                            <input id="autoForm" name="type[]" value="Worker"
-                                   class="regular-checkbox" type="checkbox"/>
-                            <label>Worker</label>
-                        </section>
-                        <section>
-                            <input id="autoForm" name="type[]" value="Stuff"
-                                   class="regular-checkbox" type="checkbox"/>
-                            <label>Stuff</label>
-                        </section>
-                    </div>
+{{--                    <div class="bg-white text-left px-4 py-5 my-4">--}}
+{{--                        <h3>Job Type</h3>--}}
+{{--                        <hr class="my-2"/>--}}
+{{--                        <section>--}}
+{{--                            <input id="autoForm" name="type[]" value="Worker"--}}
+{{--                                   class="regular-checkbox" type="checkbox"/>--}}
+{{--                            <label>Worker</label>--}}
+{{--                        </section>--}}
+{{--                        <section>--}}
+{{--                            <input id="autoForm" name="type[]" value="Stuff"--}}
+{{--                                   class="regular-checkbox" type="checkbox"/>--}}
+{{--                            <label>Stuff</label>--}}
+{{--                        </section>--}}
+{{--                    </div>--}}
                     <div class="bg-white text-left px-4 py-5 my-4">
                         <h3>Industries</h3>
                         <hr class="my-2"/>
@@ -102,16 +102,6 @@
                             <input id="autoForm" name="length[]" value=0 class="regular-checkbox"
                                    type="checkbox"/>
                             <label>Non Limited</label>
-                        </section>
-                        <section>
-                            <input name="length[]" id="autoForm" value=1 class="regular-checkbox"
-                                   type="checkbox"/>
-                            <label>1 Month</label>
-                        </section>
-                        <section>
-                            <input name="length[]" id="autoForm" value="2" class="regular-checkbox"
-                                   type="checkbox"/>
-                            <label>2 Months</label>
                         </section>
                         <section>
                             <input name="length[]" id="autoForm" value="3" class="regular-checkbox"

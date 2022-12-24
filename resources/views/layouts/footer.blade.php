@@ -60,6 +60,14 @@
         </span>
         <div class="flex mt-4 space-x-6 sm:justify-center md:mt-0">
             <p class="tracking-widest text-sm">Follow Us: </p>
+            <a href="{{env('LINKEDIN')}}" class=" hover:text-lightGreen dark:hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="2 1 26 26"
+                     aria-hidden="true">
+                    <path
+                        d="M15,3C8.373,3,3,8.373,3,15c0,6.627,5.373,12,12,12s12-5.373,12-12C27,8.373,21.627,3,15,3z M10.496,8.403 c0.842,0,1.403,0.561,1.403,1.309c0,0.748-0.561,1.309-1.496,1.309C9.561,11.022,9,10.46,9,9.712C9,8.964,9.561,8.403,10.496,8.403z M12,20H9v-8h3V20z M22,20h-2.824v-4.372c0-1.209-0.753-1.488-1.035-1.488s-1.224,0.186-1.224,1.488c0,0.186,0,4.372,0,4.372H14v-8 h2.918v1.116C17.294,12.465,18.047,12,19.459,12C20.871,12,22,13.116,22,15.628V20z"/>
+                </svg>
+                <span class="sr-only">LinkedIn page</span>
+            </a>
             <a href="{{env('FACEBOOK')}}" class=" hover:text-lightGreen dark:hover:text-white">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path fill-rule="evenodd"
@@ -85,7 +93,8 @@
             </a>
         </div>
         <div>
-            <form id="formsub" class="flex text-lightBlue md:mt-4 justify-center content-center px-3" style="border: 1px solid #cccccc">
+            <form id="formsub" class="flex text-lightBlue md:mt-4 justify-center content-center px-3"
+                  style="border: 1px solid #cccccc">
                 <input name="email" id="email" type="email"
                        style="border: none"
                        class="bg-offWhite focus:ring-0 text-text text-sm tracking-wide rounded-md"
@@ -105,7 +114,8 @@
             <p class="errorMsg text-xs text-center p-2.5 text-text2" style="display: none; background-color: #eab3b3;">
                 Something Went Wrong! Please Try Again!
             </p>
-            <p class="already text-xs text-center p-2.5 text-offWhite" style="display: none; background-color: #636b6b;">
+            <p class="already text-xs text-center p-2.5 text-offWhite"
+               style="display: none; background-color: #636b6b;">
                 Its Okay! You already subscribed.
             </p>
         </div>
@@ -139,20 +149,19 @@
                         $('.successMsg').show()
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        console.log('XMLHttpRequest',XMLHttpRequest, textStatus, errorThrown)
+                        console.log('XMLHttpRequest', XMLHttpRequest, textStatus, errorThrown)
                         if (XMLHttpRequest.status === 201) {
                             hideLoading()
                             $('.successMsg').show()
                             $('.already').hide()
                             $('.errorMsg').hide()
                             $("#sendForm").trigger("reset")
-                        } else if(XMLHttpRequest.status === 422) {
+                        } else if (XMLHttpRequest.status === 422) {
                             hideLoading()
                             $('.already').show()
                             $('.successMsg').hide()
                             $('.errorMsg').hide()
-                        }
-                        else{
+                        } else {
                             hideLoading()
                             $('.errorMsg').show()
                             $('.successMsg').hide()

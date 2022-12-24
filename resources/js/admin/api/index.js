@@ -74,8 +74,6 @@ class HttpClient {
 
     isMultimedia() {
         this.multimedia = true
-        this.client.defaults.headers['Content-Type'] = 'multipart/form-data' // for image upload
-
         return this
     }
 

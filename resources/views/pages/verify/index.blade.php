@@ -19,16 +19,16 @@
 
             </form>
             <div style="margin-top: 10px; display: none" id="verifyForm" class="pb-24 px-52 pt-4">
-                    <p class="text-sm text-mainBlue mb-3">A verification code was sent to you phone</p>
-                    <form>
-                        <input type="text" id="verificationCode" class="form-control"
-                               placeholder="Enter Verification Code"><br>
-                        <button type="button"
-                                class="mt-4 bg-lightGreen hover:bg-mainBlue text-white font-bold py-2 px-4 rounded"
-                                onclick="VerifyCode();">
-                            Verify Code
-                        </button>
-                    </form>
+                <p class="text-sm text-mainBlue mb-3">A verification code was sent to you phone</p>
+                <form>
+                    <input type="text" id="verificationCode" class="form-control"
+                           placeholder="Enter Verification Code"><br>
+                    <button type="button"
+                            class="mt-4 bg-lightGreen hover:bg-mainBlue text-white font-bold py-2 px-4 rounded"
+                            onclick="VerifyCode();">
+                        Verify Code
+                    </button>
+                </form>
                 <br/>
                 <p class="text-red-600 text-sm px-14 py-3" id="error2"
                    style="display: none;font-size: 12px; text-transform: capitalize"></p>
@@ -57,16 +57,12 @@
         window.onload = function () {
             render();
         };
-
         function render() {
             window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
             recaptchaVerifier.render();
         }
-
         firebase.initializeApp(firebaseConfig);
         const info = document.querySelector(".alert-info");
-
-
         const phoneInputField = document.querySelector("#number");
         const phoneInput = window.intlTelInput(phoneInputField, {
             initialCountry: "auto",
@@ -74,7 +70,6 @@
             utilsScript:
                 "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
         });
-
         function getIp(callback) {
             fetch('https://ipinfo.io/json?token=1cadfc8d3a18ad', {
                 headers: {
@@ -90,7 +85,6 @@
                 })
                 .then((resp) => callback(resp.country));
         }
-
         function process(event) {
             event.preventDefault();
             const phoneNumber = phoneInput.getNumber();
@@ -99,12 +93,10 @@
             firebase.auth().signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier).then(function (confirmationResult) {
                 window.confirmationResult = confirmationResult;
                 coderesult = confirmationResult;
-
                 $("#sentSuccess").text("Enter Verification code");
                 $("#sentSuccess").show();
                 $("#sendForm").css('display', 'none');
                 $("#verifyForm").show();
-
             }).catch(error => {
                 console.log('err', error.message)
                 $("#number").css('border', '1px solid red');
@@ -113,7 +105,6 @@
                 $("#error").show();
             });
         }
-
         function VerifyCode() {
             const code = $("#verificationCode").val();
             coderesult.confirm(code).then(function (result) {
@@ -128,7 +119,6 @@
                 $("#error2").show();
             });
         }
-
         function reload(){
             window.location.reload()
         }
