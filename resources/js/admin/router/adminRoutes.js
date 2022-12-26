@@ -19,6 +19,12 @@ const routes = [
         component: () => import(`@/views/UserProfile.vue`)
     },
     {
+        path: 'applications',
+        name: 'applications',
+        meta: {name: 'Applications', slug: 'applications', requiresAuth: true},
+        component: () => import(`@/views/Applications/List.vue`)
+    },
+    {
         path: 'articles',
         name: 'articles',
         meta: {name: 'Articles', slug: 'articles', requiresAuth: true},

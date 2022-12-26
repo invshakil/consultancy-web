@@ -48,6 +48,11 @@ const adminRoutes = [
                 slug: 'jobs'
             },
             {
+                to: `/${adminPrefixSlug}/applications`,
+                icon: 'mdi-table-edit',
+                slug: 'applications'
+            },
+            {
                 to: `/${adminPrefixSlug}/create-job`,
                 icon: 'mdi-square-edit-outline',
                 slug: 'new-job'

@@ -58,6 +58,8 @@ Route::group([
     Route::post("categories/priority-update", [CategoryController::class, 'priorityUpdate']);
     Route::apiResource("categories", CategoryController::class);
 
+    Route::apiResource("applications", ApplicationController::class);
+
     Route::get("articles/{slug}/edit", [ArticleController::class, 'edit']);
     Route::post("articles/{slug}", [ArticleController::class, 'update']);
     Route::get("articles/mostRead", [ArticleController::class, 'mostRead']);
