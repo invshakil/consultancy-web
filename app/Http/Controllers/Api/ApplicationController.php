@@ -19,7 +19,7 @@ class ApplicationController extends ApiController
      */
     public function index(Request $request): JsonResponse
     {
-        $allApplications = Application::all();
+        $allApplications = Application::with('job')->paginate(10);
         return $this->successResponse($allApplications);
     }
 

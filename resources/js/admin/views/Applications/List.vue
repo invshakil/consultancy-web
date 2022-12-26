@@ -46,15 +46,15 @@
                         </v-row>
 
                         <v-simple-table>
-                            <template v-slot:default v-if="articles">
-                                <thead >
+                            <template v-slot:default v-if="application">
+                                <thead>
                                 <tr>
-                                    <th class="text-left">{{$t('Common.category')}}</th>
-                                    <th class="text-left">{{$t('Common.title')}}</th>
-                                    <th class="text-left">{{$t('Common.published')}}</th>
-                                    <th class="text-left">{{$t('Common.featured')}}</th>
-                                    <th class="text-left">{{$t('Common.viewed')}}</th>
-                                    <th class="text-left">{{$t('Common.actions')}}</th>
+                                    <th class="text-left">Job</th>
+                                    <th class="text-left">Applicant</th>
+                                    <th class="text-left">Email</th>
+                                    <th class="text-left">Phone</th>
+                                    <th class="text-left">Whatsapp</th>
+                                    <th class="text-left">CV</th>
                                 </tr>
                                 </thead>
                                 <tbody v-if="loading" style="height: 100vh;">
@@ -66,64 +66,25 @@
                                 </v-card-text>
                                 </tbody>
                                 <tbody>
-                                <tr v-for="(article, index) in articles.data" :key="index">
+                                <tr v-for="(app, index) in application.data" :key="index">
                                     <td>
-                                        <v-chip
-                                            v-for="category in article.categories"
-                                            :key="category.id"
-                                            @click="() => {
-                                                filter.category = category.id;
-                                                getData()
-                                            }"
-                                            small
-                                            class="ma-2"
-                                            :color="$store.state.app.color"
-                                        >
-                                            {{ category.name}}
-                                        </v-chip>
+                                        {{ app.job.title }}
                                     </td>
                                     <td style="display: flex; align-items: center; height: fit-content; padding: 45px">
-                                        <span v-if="article.image" class="mr-4">
-                                            <img v-bind:src="'/' + article.image"
-                                                 :alt="article.title"
-                                                 width="60"
-                                                 style="border-radius: 10px;">
-                                        </span>
-                                        <span >
-                                            <a  :href="`/article/${article.slug }`" target="_blank">{{article.title }}</a>
-                                        </span>
+                                        {{ app.name }}
                                     </td>
                                     <td>
-                                        <v-chip
-                                            small
-                                            class="ma-2"
-                                            text-color="white"
-                                            :color="article.published ? 'success' : 'red'"
-                                        >
-                                            {{ article.published ? 'Published' : 'Pending' }}
-                                        </v-chip>
+                                        <a :href="`mailto:${app.email}`" title="Send me an email">{{ app.email }}</a>
+                                    </td>
+                                    <td>{{ app.phone }}</td>
+                                    <td>
+                                        <a :href="`https://api.whatsapp.com/send?phone=${app.whatsapp}`">{{ app.whatsapp }}</a>
                                     </td>
                                     <td>
-                                        <v-chip
-                                            small
-                                            class="ma-2"
-                                            :color="article.featured ? 'success' : 'primary'"
-                                        >
-                                            {{ article.featured ? 'Featured' : 'Not Featured' }}
-                                        </v-chip>
+                                        <a id="id2239" target="_blank" :href="`/${app.cv}`" class="act01">Download CV</a>
                                     </td>
                                     <td>
-                                        <v-chip
-                                            small
-                                            class="ma-2"
-                                            :color="$store.state.app.color"
-                                        >
-                                            {{ article.viewed }}
-                                        </v-chip>
-                                    </td>
-                                    <td>
-                                        <v-icon small @click="edit(article.slug)">mdi-pencil</v-icon>
-                                        <v-icon small @click="destroy(article.id)">mdi-delete</v-icon>
+                                        <v-icon small @click="destroy(app.id)">mdi-delete</v-icon>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -133,12 +94,12 @@
                             <v-col cols="8">
                                 <v-container class="max-width">
                                     <v-pagination
-                                        v-model="articles.current_page"
-                                        :length="articles.last_page"
+                                        v-model="application.current_page"
+                                        :length="application.last_page"
                                         class="my-4"
                                         :total-visible="7"
                                         circle
-                                        @input="paginate(articles.current_page)"
+                                        @input="paginate(application.current_page)"
                                     ></v-pagination>
                                 </v-container>
                             </v-col>
@@ -154,9 +115,8 @@ import draggable from 'vuedraggable';
 import VTextFieldWithValidation from "@/components/inputs/VTextFieldWithValidation";
 import MaterialCard from '@/components/material/Card'
 import {ValidationObserver} from 'vee-validate'
-import Api from "@/api/resources/article";
+import ApplicationApi from "@/api/resources/application";
 import VSelectSearchWithValidation from "@/components/inputs/VSelectSearchWithValidation";
-import categoryApi from "@/api/resources/category";
 import qs from "qs";
 
 export default {
@@ -169,17 +129,18 @@ export default {
     },
     data() {
         return {
-            locale:this.$i18n.locale,
+            publicPath: process.env.APP_URL,
+            locale: this.$i18n.locale,
             loading: false,
-            articles: {},
+            application: {},
             editId: null,
             categories: [
                 {name: 'All', id: null},
             ],
             statuses: [
-                {name_en: 'All',name_bn: 'All', id: null},
-                {name_en: 'Published',name_bn: 'Published', id: 1},
-                {name_en: 'Pending',name_bn: 'Pending', id: 0},
+                {name_en: 'All', name_bn: 'All', id: null},
+                {name_en: 'Published', name_bn: 'Published', id: 1},
+                {name_en: 'Pending', name_bn: 'Pending', id: 0},
             ],
             currentPage: 1,
             filter: {
@@ -190,20 +151,14 @@ export default {
         }
     },
     methods: {
-        async getCategories() {
-            this.loading = true;
-            await categoryApi.getCategories('*').then(res => {
-                this.categories = [...this.categories, ...res.data.data];
-                this.loading = false;
-            });
-        },
         getData() {
             this.loading = true;
             const query = qs.stringify(this.filter, {encode: false, skipNulls: true});
 
-            Api.list(this.currentPage, query).then(res => {
-                this.articles = res.data.all.original.data;
-                this.currentPage = res.data.all.original.data.current_page;
+            ApplicationApi.list(this.currentPage, query).then(res => {
+                console.log('res', res.data.data)
+                this.application = res.data.data;
+                this.currentPage = res.data.current_page;
                 this.loading = false;
             }).catch(err => {
                 this.loading = false;
@@ -220,7 +175,7 @@ export default {
         destroy(id) {
             if (confirm('Are you sure?')) {
                 this.loading = true;
-                Api.delete(id).then(res => {
+                ApplicationApi.delete(id).then(res => {
                     this.loading = false;
                     this.getData();
                 }).catch(err => {
@@ -230,13 +185,7 @@ export default {
         }
     },
     async created() {
-        await this.getCategories();
         await this.getData();
     },
-    watch: {
-        '$i18n.locale': async function (newVal, oldVal) {
-             window.location.reload()
-        }
-    }
 }
 </script>
