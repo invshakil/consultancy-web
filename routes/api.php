@@ -59,6 +59,7 @@ Route::group([
     Route::apiResource("categories", CategoryController::class);
 
     Route::apiResource("applications", ApplicationController::class);
+    Route::post("applications/update/{id}", [ApplicationController::class, 'update']);
 
     Route::get("articles/{slug}/edit", [ArticleController::class, 'edit']);
     Route::post("articles/{slug}", [ArticleController::class, 'update']);

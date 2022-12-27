@@ -25,6 +25,7 @@ class CreateApplicationsTable extends Migration
             $table->string('exp_in');
             $table->string('exp_out');
             $table->string('source');
+            $table->boolean('is_published')->default(true);
             $table->timestamps();
         });
     }

@@ -19,7 +19,14 @@ class ApplicationController extends ApiController
      */
     public function index(Request $request): JsonResponse
     {
-        $allApplications = Application::with('job')->paginate(10);
+        $allApplications = Application::with('job')
+            ->when(\request()->has('search'), function ($q) {
+                $q->where('name', 'LIKE', '%' . \request('search') . '%');
+            })
+            ->when(request()->has('is_published'), function ($q) {
+                $q->where('is_published', (bool)request('is_published'));
+            })
+            ->paginate(10);
         return $this->successResponse($allApplications);
     }
 
@@ -59,75 +66,24 @@ class ApplicationController extends ApiController
 
     }
 
-//    private function storeFile($request)
-//    {
-//        $validatedData = $request->validate(['file' => 'required|csv,txt,xlx,xls,pdf|max:2048',]);
-//        $name = $request->file('file')->getClientOriginalName();
-//        $path = $request->file('file')->store('public/files');
-//        $save = new File;
-//        $save->name = $name;
-//        $save->path = $path;
-//        return $save->path;
-//    }
-
-    public function edit($slug): JsonResponse
-    {
-        try {
-            $article = Image::where('id', $slug)
-                ->with(['gallery'])->first();
-
-            return $this->successResponse($article);
-        } catch (Exception $exception) {
-            $this->errorLog($exception, 'api');
-
-            return $this->failResponse($exception->getMessage());
-        }
-    }
-
     /**
      * Updates Category & Returns updated category
-     * @param Request $request
      * @param int $id
      * @return JsonResponse
      */
-    public function update(Request $request, int $id): JsonResponse
+    public function update(int $id): JsonResponse
     {
-        $albumInfo = $this->albumRepository->update($request, $id);
+        $application=Application::find($id);
+        if($application['is_published']===0){
+            $data=['is_published'=>1];
+        }
+        else{
+            $data=['is_published'=>0];
+        }
+        $applicationInfo = $application->update($data);
         \Artisan::call('cache:clear');
 
-        return $this->successResponse($albumInfo['album']);
+        return $this->successResponse($applicationInfo);
     }
 
-    /**
-     * Deletes Category & Returns boolean
-     * @param Request $request
-     * @param int $id
-     * @return JsonResponse
-     */
-    public function destroy(Request $request, int $id): JsonResponse
-    {
-        $this->albumRepository->delete($id);
-        \Artisan::call('cache:clear');
-
-        return $this->successResponse();
-    }
-
-    /**
-     * @param $article
-     */
-    private function sendNotification($article): void
-    {
-        \Artisan::call('cache:clear');
-
-        $data = [
-            "article_id" => $article->id,
-            "title" => $article->title,
-            "body" => $article->excerpt,
-            "image" => $article->image
-        ];
-
-        \Artisan::call("send:notification", [
-            'notificationData' => $data
-        ]);
-    }
 }

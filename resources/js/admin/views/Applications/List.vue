@@ -6,8 +6,8 @@
             <v-flex>
                 <material-card
                     :color="$store.state.app.color"
-                    :title="$t('Common.articleList')"
-                    :text="$t('Common.articleFilter')"
+                    :title="'Applications List'"
+                    :text="'Use whatsapp or email to contact, download cv, or search by filter... '"
                 >
                     <v-container>
                         <v-row>
@@ -18,25 +18,16 @@
                                     {{ $t('Common.createNew') }}
                                 </v-btn>
                             </v-col>
-                            <v-col cols="12" md="3" class="px-0">
+                            <v-col cols="12" md="5" class="px-2">
                                 <VSelectSearchWithValidation v-model="filter.is_published"
                                                              :options="statuses"
                                                              @change="getData"
                                                              :ref="$t('Common.createNew')"
                                                              :field="$t('Common.createNew')"
                                                              :label="$t('Common.status')"
-                                                             :item-text="locale==='en'?'name_en':'name_bn'"/>
-                            </v-col>
-                            <v-col cols="12" md="3" class="px-0">
-                                <VSelectSearchWithValidation v-model="filter.category"
-                                                             :options="categories"
-                                                             @change="getData"
-                                                             ref="category"
-                                                             field="category"
-                                                             :label="$t('Common.category')"
                                                              :item-text="'name'"/>
                             </v-col>
-                            <v-col cols="12" md="3" class=" pl-0">
+                            <v-col cols="12" md="5" class=" pl-0">
                                 <VTextFieldWithValidation v-model="filter.search"
                                                           @keyup="getData"
                                                           ref="search"
@@ -55,6 +46,7 @@
                                     <th class="text-left">Phone</th>
                                     <th class="text-left">Whatsapp</th>
                                     <th class="text-left">CV</th>
+                                    <th class="text-left">Toggle Contact Status</th>
                                 </tr>
                                 </thead>
                                 <tbody v-if="loading" style="height: 100vh;">
@@ -67,6 +59,7 @@
                                 </tbody>
                                 <tbody>
                                 <tr v-for="(app, index) in application.data" :key="index">
+                                    <!--                                    :style="[app.is_published ? {'background': '#c8f1e0'} : {'background': '#f8d7d7'}]"-->
                                     <td>
                                         {{ app.job.title }}
                                     </td>
@@ -78,13 +71,19 @@
                                     </td>
                                     <td>{{ app.phone }}</td>
                                     <td>
-                                        <a :href="`https://api.whatsapp.com/send?phone=${app.whatsapp}`">{{ app.whatsapp }}</a>
+                                        <a :href="`https://api.whatsapp.com/send?phone=${app.whatsapp}`">{{
+                                                app.whatsapp
+                                            }}</a>
                                     </td>
                                     <td>
-                                        <a id="id2239" target="_blank" :href="`/${app.cv}`" class="act01">Download CV</a>
+                                        <a id="id2239" target="_blank" :href="`/${app.cv}`" class="act01">Download
+                                            CV</a>
                                     </td>
                                     <td>
-                                        <v-icon small @click="destroy(app.id)">mdi-delete</v-icon>
+                                        <v-icon :color="app.is_published===1?'#19b275':'#c43535'" large
+                                                @click="destroy(app.id)">
+                                            {{ app.is_published === 1 ? 'mdi-toggle-switch' : 'mdi-toggle-switch-off' }}
+                                        </v-icon>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -138,9 +137,9 @@ export default {
                 {name: 'All', id: null},
             ],
             statuses: [
-                {name_en: 'All', name_bn: 'All', id: null},
-                {name_en: 'Published', name_bn: 'Published', id: 1},
-                {name_en: 'Pending', name_bn: 'Pending', id: 0},
+                {name: 'All', id: null},
+                {name: 'Published', id: 1},
+                {name: 'Pending', id: 0},
             ],
             currentPage: 1,
             filter: {
@@ -156,7 +155,6 @@ export default {
             const query = qs.stringify(this.filter, {encode: false, skipNulls: true});
 
             ApplicationApi.list(this.currentPage, query).then(res => {
-                console.log('res', res.data.data)
                 this.application = res.data.data;
                 this.currentPage = res.data.current_page;
                 this.loading = false;
@@ -175,7 +173,7 @@ export default {
         destroy(id) {
             if (confirm('Are you sure?')) {
                 this.loading = true;
-                ApplicationApi.delete(id).then(res => {
+                ApplicationApi.update(id).then(res => {
                     this.loading = false;
                     this.getData();
                 }).catch(err => {

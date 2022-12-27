@@ -20,6 +20,7 @@ class Application extends BaseModel
         'exp_in',
         'exp_out',
         'source',
+        'is_published',
     ];
 
     /**

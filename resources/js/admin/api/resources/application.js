@@ -6,11 +6,11 @@ class ApplicationApi extends HttpClient {
     }
 
     get(slug) {
-        return this.requestType('get').request(`/articles/${slug}/edit`)
+        return this.requestType('get').request(`/applications/${slug}/edit`)
     }
 
-    delete(id) {
-        return this.requestType('delete').request(`articles/${id}`)
+    update(id) {
+        return this.requestType('post').request(`applications/update/${id}`)
     }
 }
 
