@@ -11,14 +11,22 @@
                 >
                     <v-container>
                         <v-row>
-                            <v-col cols="12" md="2" class="pr-0">
+                            <v-col cols="12" md="3" class="">
                                 <v-btn :color="$store.state.app.color"
-                                       class="float-left"
-                                       :to="{ name: 'new-article' }">
-                                    {{ $t('Common.createNew') }}
+                                       class="float-left">
+                                    <vue-excel-xlsx
+                                        :data="application.data"
+                                        :columns="columns"
+                                        :file-name="'Applications-' + formatDate(new Date())"
+                                        :file-type="'xlsx'"
+                                        :sheet-name="'applicant'"
+                                    >
+                                        Export Excel (Last Day)
+                                    </vue-excel-xlsx>
                                 </v-btn>
+
                             </v-col>
-                            <v-col cols="12" md="5" class="px-2">
+                            <v-col cols="12" md="4" class="px-2">
                                 <VSelectSearchWithValidation v-model="filter.is_published"
                                                              :options="statuses"
                                                              @change="getData"
@@ -128,6 +136,40 @@ export default {
     },
     data() {
         return {
+            columns: [
+                {
+                    label: "Job",
+                    field: "job.title",
+                },
+                {
+                    label: "Applicant",
+                    field: "name",
+                },
+                {
+                    label: "Email",
+                    field: "email",
+                },
+                {
+                    label: "Phone",
+                    field: "phone",
+                },
+                {
+                    label: "Whatsapp",
+                    field: "whatsapp",
+                },
+                {
+                    label: "Experience (in)",
+                    field: "exp_in",
+                },
+                {
+                    label: "Experience (Abroad)",
+                    field: "exp_out",
+                },
+                {
+                    label: "Passport No.",
+                    field: "passport",
+                },
+            ],
             publicPath: process.env.APP_URL,
             locale: this.$i18n.locale,
             loading: false,
@@ -150,6 +192,23 @@ export default {
         }
     },
     methods: {
+        padTo2Digits(num) {
+            return num.toString().padStart(2, '0');
+        },
+        formatDate(date) {
+            return (
+                [
+                    date.getFullYear(),
+                    this.padTo2Digits(date.getMonth() + 1),
+                    this.padTo2Digits(date.getDate()),
+                ].join('-') +
+                '_' +
+                [
+                    this.padTo2Digits(date.getHours()),
+                    this.padTo2Digits(date.getMinutes()),
+                ].join('-')
+            );
+        },
         getData() {
             this.loading = true;
             const query = qs.stringify(this.filter, {encode: false, skipNulls: true});

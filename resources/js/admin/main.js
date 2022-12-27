@@ -12,7 +12,9 @@ import vuetify from '@/plugins/vuetify'
 import '@/plugins/errorLogger'
 import helper from '@/plugins/helper';
 import VueToastr from "vue-toastr";
+import VueExcelXlsx from "vue-excel-xlsx";
 
+Vue.use(VueExcelXlsx);
 Vue.use(VueToastr, {});
 
 Vue.prototype.$helper = helper
