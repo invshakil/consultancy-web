@@ -11,11 +11,11 @@
                 >
                     <v-container>
                         <v-row>
-                            <v-col cols="12" md="3" class="">
+                            <v-col v-if="applicationLastDay.length>0" cols="12" md="3" class="">
                                 <v-btn :color="$store.state.app.color"
                                        class="float-left">
                                     <vue-excel-xlsx
-                                        :data="application.data"
+                                        :data="applicationLastDay.data"
                                         :columns="columns"
                                         :file-name="'Applications-' + formatDate(new Date())"
                                         :file-type="'xlsx'"
@@ -24,8 +24,13 @@
                                         Export Excel (Last Day)
                                     </vue-excel-xlsx>
                                 </v-btn>
-
                             </v-col>
+<!--                            <v-col v-else>-->
+<!--                                <v-btn :color="$store.state.app.color"-->
+<!--                                       class="float-left">-->
+<!--                                    No Applications In Last Day-->
+<!--                                </v-btn>-->
+<!--                            </v-col>-->
                             <v-col cols="12" md="4" class="px-2">
                                 <VSelectSearchWithValidation v-model="filter.is_published"
                                                              :options="statuses"
@@ -174,6 +179,7 @@ export default {
             locale: this.$i18n.locale,
             loading: false,
             application: {},
+            applicationLastDay: {},
             editId: null,
             categories: [
                 {name: 'All', id: null},
@@ -225,6 +231,15 @@ export default {
             this.currentPage = current_page;
             this.getData()
         },
+        getLastDayData() {
+            this.loading = true;
+            ApplicationApi.lastDay().then(res => {
+                this.applicationLastDay = res.data;
+                this.loading = false;
+            }).catch(err => {
+                this.loading = false;
+            })
+        },
         edit(slug) {
             // this.$router.push({path: `articles/${slug}/edit`, params: {slug: slug}});
             window.location.replace(`articles/${slug}/edit`)
@@ -242,6 +257,7 @@ export default {
         }
     },
     async created() {
+        await this.getLastDayData();
         await this.getData();
     },
 }

@@ -59,7 +59,6 @@ class WebsiteController extends Controller
         $this->articleRepository = $articleRepository;
         $this->articleRepository->SetVisitor();
 
-//        $subscribers = NewsLetter::all();
         $footerPages = \Cache::remember('footer_pages', config('cache.default_ttl'), function () {
             return PageLink::where('key', 'footer_pages')->with('page:id,title,slug')->get()->toArray();
         });
@@ -69,7 +68,6 @@ class WebsiteController extends Controller
 
         view()->share('footerPages', $footerPages);
         view()->share('settings', $this->homePageSeoData);
-//        view()->share('subscribers', $subscribers);
         view()->share('mostReadPosts', $mostReadPosts);
     }
 

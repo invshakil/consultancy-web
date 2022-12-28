@@ -60,6 +60,7 @@ Route::group([
 
     Route::apiResource("applications", ApplicationController::class);
     Route::post("applications/update/{id}", [ApplicationController::class, 'update']);
+    Route::get("application/lastDay", [ApplicationController::class, 'lastDay']);
 
     Route::get("articles/{slug}/edit", [ArticleController::class, 'edit']);
     Route::post("articles/{slug}", [ArticleController::class, 'update']);

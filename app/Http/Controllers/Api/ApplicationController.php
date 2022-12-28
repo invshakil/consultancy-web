@@ -7,6 +7,7 @@ use Exception;
 use File;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Throwable;
 
 class ApplicationController extends ApiController
@@ -84,6 +85,14 @@ class ApplicationController extends ApiController
         \Artisan::call('cache:clear');
 
         return $this->successResponse($applicationInfo);
+    }
+
+    public function lastDay(): JsonResponse
+    {
+        $application=Application::where('created_at', '>', Carbon::now()->subDays(1))
+            ->get();
+
+        return $this->successResponse($application);
     }
 
 }

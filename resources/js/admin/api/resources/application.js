@@ -5,6 +5,10 @@ class ApplicationApi extends HttpClient {
         return this.requestType('get').request(`/applications?page=${page}&${query}`)
     }
 
+    lastDay() {
+        return this.requestType('get').request(`/application/lastDay`)
+    }
+
     get(slug) {
         return this.requestType('get').request(`/applications/${slug}/edit`)
     }
