@@ -29,6 +29,7 @@ class CreateJobsTable extends Migration
             $table->string('exp_max');
             $table->string('industry');
             $table->string('type');
+            $table->integer('viewed')->default(0);
             $table->timestamps();
         });
     }

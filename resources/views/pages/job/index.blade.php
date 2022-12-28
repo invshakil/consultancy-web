@@ -164,6 +164,7 @@
                                 'code' => $job['id'],
                                 'date' => $job['created_at'],
                                 'type' => $job['type'],
+                                'detail' => false,
                             ])
                     @endforeach
                 @else

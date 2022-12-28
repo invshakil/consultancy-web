@@ -310,10 +310,26 @@ class WebsiteController extends Controller
     }
 
 
-    public function verify()
+    public function verify($id)
     {
+        $job=Job::find($id);
+
+        $cacheKey = request()->ip() .'job_'. $id;
+
+        \Cache::remember($cacheKey, 60, function () use ($job) {
+            $job->viewed = $job->viewed + 1;
+            $job->save();
+            return true;
+        });
+
+        $this->homePageSeoData = json_decode(setting()->get('general'), true);
+        $appName = env('APP_NAME');
+        $this->baseSeoData['title'] = $job['title'] . ' | ' .'Job Application'. ' | ' . $appName;
+        $this->baseSeoData['description'] = $job['description'] . '-' . $appName;
         $this->seo($this->baseSeoData);
-        return view('pages.verify.index');
+//        $shareLinks = $this->getSeoLinksForDetailsPage($job);
+
+        return view('pages.verify.index', compact('job'));
     }
 
     public function study($slug)

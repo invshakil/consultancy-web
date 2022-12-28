@@ -26,6 +26,7 @@ class Job extends BaseModel
         'exp_max',
         'industry',
         'type',
+        'viewed',
     ];
 
     public function country(): BelongsToMany
