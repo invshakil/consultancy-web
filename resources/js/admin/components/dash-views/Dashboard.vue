@@ -9,6 +9,36 @@
                 sm6
                 xs12
                 md6
+                lg6
+            >
+                <material-stats-card
+                    :color="$store.state.app.color"
+                    icon="mdi-account-multiple-check "
+                    :title="`Total Applications`"
+                    :value=applicationCount
+                    sub-icon="mdi-update"
+                    :sub-text="applicationCountLastWeek+' Applications in last week'"
+                />
+            </v-flex>
+            <v-flex
+                sm6
+                xs12
+                md6
+                lg6
+            >
+                <material-stats-card
+                    :color="$store.state.app.color"
+                    icon="mdi-account-multiple-check "
+                    :title="`Total Jobs`"
+                    :value=jobCount
+                    sub-icon="mdi-update"
+                    :sub-text="jobCountLastWeek+' Jobs added in last week'"
+                />
+            </v-flex>
+            <v-flex
+                sm6
+                xs12
+                md6
                 lg3
             >
                 <material-stats-card
@@ -105,6 +135,10 @@ export default {
             getSubsCount: 0,
             getLastWeekSubsCount: 0,
             dailyData: [],
+            jobCount:0,
+            jobCountLastWeek:0,
+            applicationCount:0,
+            applicationCountLastWeek:0
         }
     },
 
@@ -124,6 +158,10 @@ export default {
                 this.getSubsCount = res.data.getSubsCount.original.data;
                 this.getLastWeekSubsCount = res.data.getLastWeekSubsCount.original.data;
                 this.dailyData = res.data.hitsPerDayLastWeek.original.data;
+                this.jobCount = res.data.jobCount.original.data;
+                this.jobCountLastWeek = res.data.jobCountLastWeek.original.data;
+                this.applicationCount = res.data.applicationCount.original.data;
+                this.applicationCountLastWeek = res.data.applicationCountLastWeek.original.data;
                 this.loading = false;
             }).catch(err => {
                 this.loading = false;

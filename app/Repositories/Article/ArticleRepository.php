@@ -2,8 +2,10 @@
 
 namespace App\Repositories\Article;
 
+use App\Models\Application;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Job;
 use App\Models\Keyword;
 use App\Models\NewsLetter;
 use App\Models\User;
@@ -249,6 +251,31 @@ class ArticleRepository implements ArticleInterface
     {
         return Article::all()->count();
     }
+
+    public function jobsInfo(): int
+    {
+        return Job::all()->count();
+    }
+
+    public function getJobCount()
+    {
+        return Job::where('created_at', '>', Carbon::now()->subDays(7))
+            ->groupBy(\DB::raw('HOUR(created_at)'))
+            ->count();
+    }
+
+    public function applicationInfo(): int
+    {
+        return Application::all()->count();
+    }
+
+    public function getApplicationCount()
+    {
+        return Application::where('created_at', '>', Carbon::now()->subDays(7))
+            ->groupBy(\DB::raw('HOUR(created_at)'))
+            ->count();
+    }
+
 
     public function SetVisitor()
     {

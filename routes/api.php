@@ -64,6 +64,7 @@ Route::group([
     Route::get("articles/{slug}/edit", [ArticleController::class, 'edit']);
     Route::post("articles/{slug}", [ArticleController::class, 'update']);
     Route::get("articles/mostRead", [ArticleController::class, 'mostRead']);
+    Route::get("articles/dashboard", [ArticleController::class, 'dashboard']);
     Route::post("articles/translate/{slug}", [ArticleController::class, 'translate']);
     Route::apiResource("articles", ArticleController::class);
 

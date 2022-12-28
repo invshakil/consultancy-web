@@ -28,6 +28,16 @@ class ArticleController extends ApiController
     {
 
         $allArticles = $this->successResponse($this->articleRepository->paginate(10), true);
+
+        $response = [
+            'all' => $allArticles,
+        ];
+
+        return response($response, 201);
+    }
+
+    public function dashboard(){
+
         $count = $this->successResponse($this->articleRepository->getArticleCount(), true);
         $hitsPerUser = $this->successResponse($this->articleRepository->getUniqueVisitorCount(), true);
         $hits = $this->successResponse($this->articleRepository->getTotalVisitCount(), true);
@@ -37,9 +47,12 @@ class ArticleController extends ApiController
         $getLastWeekSubsCount = $this->successResponse($this->articleRepository->getLastWeekSubsCount(), true);
         $hitsPerDayLastWeek = $this->successResponse($this->articleRepository->getLastWeeksVisitCountByDay(), true);
         $AllCount = $this->successResponse($this->articleRepository->getAllArticleCount(), true);
+        $jobCount = $this->successResponse($this->articleRepository->jobsInfo(), true);
+        $jobCountLastWeek = $this->successResponse($this->articleRepository->getJobCount(), true);
+        $applicationCount = $this->successResponse($this->articleRepository->applicationInfo(), true);
+        $applicationCountLastWeek = $this->successResponse($this->articleRepository->getApplicationCount(), true);
 
         $response = [
-            'all' => $allArticles,
             'countInLastDay' => $count,
             'allArticleCount' => $AllCount,
             'allTimeUniqueVisitors' => $hitsPerUser,
@@ -48,7 +61,11 @@ class ArticleController extends ApiController
             'totalVisitsLastDay' => $hitsLastDay,
             'getSubsCount' => $getSubsCount,
             'getLastWeekSubsCount' => $getLastWeekSubsCount,
-            'hitsPerDayLastWeek' => $hitsPerDayLastWeek
+            'hitsPerDayLastWeek' => $hitsPerDayLastWeek,
+            'jobCount'=>$jobCount,
+            'jobCountLastWeek'=>$jobCountLastWeek,
+            'applicationCount'=>$applicationCount,
+            'applicationCountLastWeek'=>$applicationCountLastWeek,
         ];
 
         return response($response, 201);

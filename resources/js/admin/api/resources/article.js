@@ -4,8 +4,9 @@ class ArticleApi extends HttpClient {
     list(page = 1, query) {
         return this.requestType('get').request(`/articles?page=${page}&${query}`)
     }
+
     ArticleCount() {
-        return this.requestType('get').request(`articles`)
+        return this.requestType('get').request(`articles/dashboard`)
     }
 
     mostRead() {
