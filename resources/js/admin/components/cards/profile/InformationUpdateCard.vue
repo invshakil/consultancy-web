@@ -55,24 +55,10 @@
                                                       :label="'Update Profile Image*'"/>
                         </v-col>
 
-                        <v-col cols="12" md="6">
-                            <v-img :src="profile.image" alt="this image"
+                        <v-col cols="12" md="12">
+                            <v-img :src="profile.image" alt="image"
                                    style="width: 600px; height: 300px; object-fit: contain"
                             />
-                        </v-col>
-
-                        <v-col cols="12" md="6">
-                            <h3>Update Your Bio, Tell us who you are</h3>
-                            <vue-editor
-                                :editorOptions="editorConfig"
-                                v-model="profile.bio"/>
-                        </v-col>
-
-                        <v-col cols="12" md="6">
-                            <h3>Write about what you love to write</h3>
-                            <vue-editor id="editor"
-                                        :editorOptions="editorConfig"
-                                        v-model="profile.types"/>
                         </v-col>
 
                         <v-flex
@@ -132,8 +118,6 @@ export default {
                 first_name: '',
                 last_name: '',
                 email: '',
-                bio: '',
-                types: '',
                 image: '',
                 locale: this.$i18n.locale,
             },
@@ -143,11 +127,9 @@ export default {
         const {user} = this.$store.state
         this.profile = {
             gender: parseInt(user.gender),
-            first_name: this.locale==='en'? user.first_name_en:user.first_name_bn,
-            last_name: this.locale==='en'? user.last_name_en:user.last_name_bn,
+            first_name:  user.first_name,
+            last_name: user.last_name,
             email: user.email,
-            bio: this.locale==='en'? user.bio_en:user.bio_bn,
-            types: this.locale==='en'? user.types_en:user.types_bn,
             image: user.image,
         }
         console.log('user', user)
@@ -166,10 +148,5 @@ export default {
                 .catch(() => this.$store.dispatch('app/setSnackbarMessage', this.$t('Messages.something_went_wrong')))
         },
     },
-    watch: {
-        '$i18n.locale': async function (newVal, oldVal) {
-            window.location.reload()
-        }
-    }
 }
 </script>
