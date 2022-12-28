@@ -29,8 +29,9 @@
                                    placeholder="Whatsapp No *" style="width: 70%"/>
                             <div>
                                 <input type="checkbox" name="same" id="same"/>
-                                <input class="-ml-3" style="background-color: transparent; font-size: 11px; width: 85%"
-                                       value="same as phone no?" disabled/>
+                                <input class="-ml-3 text-white"
+                                       style="background-color: transparent; font-size: 11px; width: 87%"
+                                       value="same as phone" disabled/>
                             </div>
                         </div>
                     </section>
@@ -72,11 +73,13 @@
                         <option value="others">Others</option>
                     </select>
                     <input name="passport" id="passport" type="text" placeholder="Passport No."/>
-                    <input name="file" required type="file" id="file" class="hidden"/>
+                    <input name="file" required type="file" id="file" style="display: none"
+                           accept="application/pdf"
+                    />
                     <label for="file" class="text-xs text-left flex bg-white rounded-md">
                         <span id="fileRef"
-                              class="px-3 rounded-md border border-whiteDark bg-whiteDark py-1 pb-5 cursor-pointer">Upload Resume</span>
-                        <p id="fileName" class="hidden text-xs mt-3 ml-1" ></p>
+                              class="px-3 rounded-md bg-whiteDark py-1 pb-5 cursor-pointer">Upload Resume</span>
+                        <p id="fileName" class="text-xs mt-3 ml-1">choose a pdf file</p>
                     </label>
                     <input placeholder="dummy" class="opacity-0"/>
 
@@ -86,19 +89,25 @@
                     </section>
                     <input placeholder="dummy" class="opacity-0"/>
 
-                    <section class="text-left" style="margin-top: -15px">
-                        <input type="checkbox" class="regular-checkbox" checked/>
-                        <label class="text-xs text-white"> I Agree To The Terms & Conditions</label>
-                    </section>
+                    {{--                    <section class="text-left" style="margin-top: -15px">--}}
+                    {{--                        <input type="checkbox" class="regular-checkbox" checked/>--}}
+                    {{--                        <label class="text-xs text-white"> I Agree To The Terms & Conditions</label>--}}
+                    {{--                    </section>--}}
                 </section>
-                <button class="bg-mainBlue px-6 py-2 text-white  rounded-full hover:bg-lightGreen font-bold submitCv"
+                <button class="bg-lightBlue px-6 py-2 text-white  rounded-full hover:bg-lightGreen font-bold submitCv"
                         type="submit">Submit
                 </button>
             </form>
-            <p style="display: none" class="successMsg text-xl text-center text-lightGreen font-extrabold bg-whiteDark px-5 py-3 my-5">
+            <p style="display: none"
+               class="successMsg text-xs text-center text-lightGreen font-extrabold bg-whiteDark px-5 py-3 my-5">
                 Your CV Has Been Submitted! We Will Get Back To You Soon!!</p>
-            <p style="display: none" class="errorMsg text-xl text-center text-white font-extrabold bg-cancel px-5 py-3 my-5">
+            <p style="display: none"
+               class="errorMsg text-xs text-center text-white font-extrabold bg-text2 px-5 py-3 my-5">
                 Something Went Wrong! Please Try Again!
+            </p>
+            <p style="display: none"
+               class="errorMsg2 text-xs text-center text-white font-extrabold bg-text2 px-5 py-3 my-5">
+                Your Resume must be a file of type: pdf
             </p>
         </div>
     </div>
@@ -111,7 +120,7 @@
         $(document).ready(function () {
             $(document).on('click', '.submitCv', function (e) {
                 e.preventDefault()
-                let verified = $('#exp_out').val() && $('#exp_in').val() && $('#source').val() && $('#file').val() && $('#name').val() && $('#email').val()
+                let verified = $('#exp_out').val() && $('#exp_in').val() && $('#file').val() && $('#name').val() && $('#email').val()
                 let data = new FormData()
                 data.append('file', document.getElementById('file').files[0])
                 data.append('name', $('#name').val())
@@ -140,16 +149,24 @@
                         contentType: false,
                         success: function (response) {
                             console.log('response', response.status)
-                            // localStorage.removeItem('phone')
+                            localStorage.removeItem('phone')
                             $('.successMsg').show()
                             $("#cv-form").trigger("reset")
+                            $('.errorMsg').hide()
+                            $('.errorMsg2').hide()
                         },
                         error: function (XMLHttpRequest, textStatus, errorThrown) {
-                            $('.errorMsg').show()
+                            if (XMLHttpRequest.status === 422) {
+                                $('.errorMsg2').show()
+                            } else {
+                                $('.errorMsg').show()
+                            }
+                            // console.log('XMLHttpRequest',XMLHttpRequest?.responseJSON?.errors?.file)
+
                         }
                     })
                 } else {
-                    ['name', 'source', 'exp_in', 'exp_out', 'fileRef', 'jobID', 'file', 'email', 'whatsapp'].map(k => {
+                    ['name', 'exp_in', 'exp_out', 'fileRef', 'jobID', 'file', 'email', 'whatsapp'].map(k => {
                         if ($(`#${k}`).val()) {
                             $(`#${k}`).css('border', '1px solid green');
                         } else {
@@ -168,7 +185,7 @@
     </script>
 
     <script>
-        ['name', 'source', 'exp_in', 'exp_out', 'file', 'jobID'].map(k => {
+        ['name', 'source', 'exp_in', 'exp_out', 'file', 'jobID', 'fileRef'].map(k => {
             $(`#${k}`).on('input', function () {
                 const input = $(this);
                 if (input.val() && input.val() !== null) {
@@ -190,9 +207,9 @@
         $('#file').on('input', function () {
             if (document.getElementById('file').files[0]) {
                 $('#fileRef').css('border', '1px solid green');
-                let name=document.getElementById('file').files[0].name
-                let size=document.getElementById('file').files[0].size
-                $('#fileName').text(name+ ' ( ' +(size/1024).toFixed(0)+ ' KB' +' ) ' )
+                let name = document.getElementById('file').files[0].name
+                let size = document.getElementById('file').files[0].size
+                $('#fileName').text(name + ' ( ' + (size / 1024).toFixed(0) + ' KB' + ' ) ')
                 $('#fileName').show()
 
             } else {
