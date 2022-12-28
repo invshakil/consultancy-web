@@ -55,7 +55,7 @@
                                                       :label="'Update Profile Image*'"/>
                         </v-col>
 
-                        <v-col cols="12" md="12">
+                        <v-col cols="12" md="6">
                             <v-img :src="profile.image" alt="image"
                                    style="width: 600px; height: 300px; object-fit: contain"
                             />
