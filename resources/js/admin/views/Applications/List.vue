@@ -72,7 +72,7 @@
                                 </v-card-text>
                                 </tbody>
                                 <tbody>
-                                <tr v-for="(app, index) in application.data" :key="index" :style="app.job? 'background:#ecf9f2': 'background:#ffffcc'">
+                                <tr v-for="(app, index) in application.data" :key="index">
                                     <!--                                    :style="[app.is_published ? {'background': '#c8f1e0'} : {'background': '#f8d7d7'}]"-->
                                     <td v-if="app.job">
                                         {{ app.job.title }}
