@@ -206,9 +206,27 @@ class WebsiteController extends Controller
 
     public function contactStudy(Request $request)
     {
-        $this->sendMailStudy($request);
-        $this->seo($this->baseSeoData);
-        return response('sent mail', 201);
+        \DB::beginTransaction();
+
+        $data = [
+            'name' => $request->input('name'),
+            'phone' => $request->input('phone'),
+            'email' => $request->input('email'),
+            'whatsapp' => $request->input('whatsapp'),
+        ];
+
+        try {
+            $application = Application::create($data);
+            \DB::commit();
+            $this->seo($this->baseSeoData);
+            return response($application, 201);
+
+        } catch (Throwable $throwable) {
+            \DB::rollBack();
+            $this->errorLog($throwable, 'api');
+
+            return response($throwable->getMessage(), 520);
+        }
     }
 
     private function sendMail($request)
@@ -335,6 +353,8 @@ class WebsiteController extends Controller
     public function study($slug)
     {
         $country=$slug;
+        $this->baseSeoData['title'] = $this->homePageSeoData['study_title'];
+        $this->baseSeoData['description'] = $this->homePageSeoData['study_description'];
         $this->seo($this->baseSeoData);
         return view('pages.study.index', compact('country'));
     }

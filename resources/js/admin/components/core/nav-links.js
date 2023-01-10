@@ -2,23 +2,28 @@ const adminPrefixSlug = 'dashboard/admin'
 const adminRoutes = [
     {
         to: `/${adminPrefixSlug}/home`,
-        icon: 'mdi-view-dashboard',
+        icon: 'mdi-alpha-d-box-outline',
         slug: 'dashboard'
     },
     {
+        to: `/${adminPrefixSlug}/applications`,
+        icon: 'mdi-alpha-a-box-outline',
+        slug: 'applications'
+    },
+    {
         to: `#`,
-        icon: 'mdi-briefcase-edit',
-        slug: 'articles',
+        icon: 'mdi-alpha-b-box-outline',
+        slug: 'blogs',
         subLinks: [
             {
                 to: `/${adminPrefixSlug}/categories`,
-                icon: 'mdi-table-edit',
+                icon: 'mdi-alpha-c-box-outline',
                 slug: 'categories'
             },
             {
                 to: `/${adminPrefixSlug}/articles`,
                 icon: 'mdi-table-edit',
-                slug: 'articles'
+                slug: 'blogs'
             },
             {
                 to: `/${adminPrefixSlug}/create-article`,
@@ -29,28 +34,23 @@ const adminRoutes = [
     },
     {
         to: `#`,
-        icon: 'mdi-briefcase-edit',
+        icon: 'mdi-alpha-j-box-outline',
         slug: 'jobs',
         subLinks: [
             {
                 to: `/${adminPrefixSlug}/countries`,
-                icon: 'mdi-table-edit',
+                icon: 'mdi-google-maps',
                 slug: 'countries'
             },
             {
                 to: `/${adminPrefixSlug}/industries`,
-                icon: 'mdi-table-edit',
+                icon: 'mdi-robot-industrial',
                 slug: 'industries'
             },
             {
                 to: `/${adminPrefixSlug}/jobs`,
                 icon: 'mdi-table-edit',
                 slug: 'jobs'
-            },
-            {
-                to: `/${adminPrefixSlug}/applications`,
-                icon: 'mdi-table-edit',
-                slug: 'applications'
             },
             {
                 to: `/${adminPrefixSlug}/create-job`,
@@ -61,7 +61,7 @@ const adminRoutes = [
     },
     {
         to: `#`,
-        icon: 'mdi-page-next',
+        icon: 'mdi-alpha-s-box-outline',
         slug: 'pages',
         subLinks: [
             {

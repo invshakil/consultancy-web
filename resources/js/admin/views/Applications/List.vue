@@ -37,7 +37,7 @@
                                                              @change="getData"
                                                              :ref="$t('Common.createNew')"
                                                              :field="$t('Common.createNew')"
-                                                             :label="$t('Common.status')"
+                                                             :label="'Contact Status'"
                                                              :item-text="'name'"/>
                             </v-col>
                             <v-col cols="12" md="5" class=" pl-0">
@@ -53,13 +53,14 @@
                             <template v-slot:default v-if="application">
                                 <thead>
                                 <tr>
-                                    <th class="text-left">Job</th>
+                                    <th class="text-left">Interested In </th>
                                     <th class="text-left">Applicant</th>
                                     <th class="text-left">Email</th>
                                     <th class="text-left">Phone</th>
                                     <th class="text-left">Whatsapp</th>
                                     <th class="text-left">CV</th>
-                                    <th class="text-left">Toggle Contact Status</th>
+                                    <th class="text-left">Status</th>
+                                    <th class="text-left">Toggle Status</th>
                                 </tr>
                                 </thead>
                                 <tbody v-if="loading" style="height: 100vh;">
@@ -71,12 +72,15 @@
                                 </v-card-text>
                                 </tbody>
                                 <tbody>
-                                <tr v-for="(app, index) in application.data" :key="index">
+                                <tr v-for="(app, index) in application.data" :key="index" :style="app.job? 'background:#ecf9f2': 'background:#ffffcc'">
                                     <!--                                    :style="[app.is_published ? {'background': '#c8f1e0'} : {'background': '#f8d7d7'}]"-->
-                                    <td>
+                                    <td v-if="app.job">
                                         {{ app.job.title }}
                                     </td>
-                                    <td style="display: flex; align-items: center; height: fit-content; padding: 45px">
+                                    <td v-else>
+                                        Study Abroad
+                                    </td>
+                                    <td style="display: flex; align-items: center; height: fit-content;">
                                         {{ app.name }}
                                     </td>
                                     <td>
@@ -88,14 +92,20 @@
                                                 app.whatsapp
                                             }}</a>
                                     </td>
-                                    <td>
+                                    <td v-if="app.cv">
                                         <a id="id2239" target="_blank" :href="`/${app.cv}`" class="act01">Download
                                             CV</a>
                                     </td>
+                                    <td v-else> No CV Attached</td>
                                     <td>
-                                        <v-icon :color="app.is_published===1?'#19b275':'#c43535'" large
+                                        <button @click="destroy(app.id)" :style="app.is_published === 1 ? 'color:red': 'color:green'">
+                                            {{ app.is_published === 1 ? 'Pending' : 'Contacted' }}
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <v-icon :color="app.is_published===0?'#19b275':'#c43535'" large
                                                 @click="destroy(app.id)">
-                                            {{ app.is_published === 1 ? 'mdi-toggle-switch' : 'mdi-toggle-switch-off' }}
+                                            {{ app.is_published === 0 ? 'mdi-toggle-switch' : 'mdi-toggle-switch-off' }}
                                         </v-icon>
                                     </td>
                                 </tr>
@@ -186,7 +196,7 @@ export default {
             ],
             statuses: [
                 {name: 'All', id: null},
-                {name: 'Published', id: 1},
+                {name: 'Contacted', id: 1},
                 {name: 'Pending', id: 0},
             ],
             currentPage: 1,

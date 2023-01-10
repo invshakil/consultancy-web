@@ -28,17 +28,24 @@
                                                           :label="'Blog Page Title'"/>
                             </v-col>
                             <v-col cols="12" md="6">
-                                <VTextFieldWithValidation v-model="form.study_description"
-                                                          ref="app_version"
-                                                          field="app_version"
-                                                          :label="'Study Page Description'"/>
-                            </v-col>
-                            <v-col cols="12" md="6">
                                 <VTextFieldWithValidation v-model="form.blog_description"
                                                           ref="app_version"
                                                           field="app_version"
                                                           :label="'Blog Page Description'"/>
                             </v-col>
+                            <v-col cols="12" md="6">
+                                <VTextFieldWithValidation v-model="form.study_title"
+                                                          ref="app_version"
+                                                          field="app_version"
+                                                          :label="'Study Page Title'"/>
+                            </v-col>
+                            <v-col cols="12" md="6">
+                                <VTextFieldWithValidation v-model="form.study_description"
+                                                          ref="app_version"
+                                                          field="app_version"
+                                                          :label="'Study Page Description'"/>
+                            </v-col>
+
 
                             <v-col cols="12" md="6">
                                 <VTextFieldWithValidation v-model="form.job_title"
@@ -121,6 +128,7 @@ export default {
             app_url: '',
             blog_title: '',
             job_title: '',
+            study_title: '',
             blog_description: '',
             job_description: '',
             study_description: '',

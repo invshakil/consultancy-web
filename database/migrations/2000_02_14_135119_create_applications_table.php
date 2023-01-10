@@ -15,16 +15,16 @@ class CreateApplicationsTable extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('job_id');
+            $table->unsignedBigInteger('job_id')->nullable();
             $table->string('name');
             $table->string('email');
             $table->string('phone');
             $table->string('whatsapp')->nullable();
             $table->string('cv');
             $table->string('passport')->nullable();
-            $table->string('exp_in');
-            $table->string('exp_out');
-            $table->string('source');
+            $table->string('exp_in')->nullable();
+            $table->string('exp_out')->nullable();
+            $table->string('source')->nullable();
             $table->boolean('is_published')->default(true);
             $table->timestamps();
         });
