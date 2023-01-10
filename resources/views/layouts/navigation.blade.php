@@ -1,14 +1,18 @@
 <nav class="w-screen header fixed" style="min-height: 10vh;z-index: 100!important;">
     <div class="cutCorner absolute">
         <div class="pt-3 pl-5 inline-flex">
-            <img src="{{asset('assets/images/ccLogo2.png')}}"
-                 style="margin-left: 4vw; height: 7vh; object-fit: contain"/>
-            <div class="flex flex-col">
-                <span class="text-2xl text-mainBlue font-bold uppercase"
+            <a href="{{route('home')}}">
+                <img src="{{asset('assets/images/ccLogo2.png')}}"
+                     style="margin-left: 4vw; height: 7vh; object-fit: contain"/>
+            </a>
+            <a href="{{route('home')}}">
+                <div class="flex flex-col">
+                <span class="text-xl text-mainBlue font-bold uppercase"
                       style="font-family: 'Agency FB',cursive;">Career Challengers</span>
-                <hr class="h-px bg-lightGreen border-0">
-                <span class="text-cancel text-xs" style="font-family: cursive">To change People's Lives</span>
-            </div>
+                    <hr class="h-px bg-lightGreen border-0">
+                    <span class="text-cancel text-xs" style="font-family: cursive">To change People's Lives</span>
+                </div>
+            </a>
         </div>
     </div>
     <div class="container flex flex-wrap items-center justify-between mx-auto">
@@ -30,7 +34,8 @@
         <div class="hidden lg:mt-6 mt-10 w-full md:block md:w-96 mr-44" id="navbar-multi-level">
             <ul style="margin-top: 3vh; margin-bottom: 2vh" class="flex md:mt-0">
                 <li style="z-index: 100!important;"
-                    class="px-3 font-bold bg-whiteDark tracking-widest text-lg cursor-pointer text-mainBlue li flex items-center"><a
+                    class="px-3 font-bold bg-whiteDark tracking-widest text-lg cursor-pointer text-mainBlue li flex items-center">
+                    <a
                         class="hover:text-cancel @if(Request::url() == url('/')) text-cancel @endif"
                         href="{{route('home')}}">HOME</a></li>
 
@@ -125,7 +130,6 @@
                     cutCorner.addClass("bg-offWhite");
                     cutCorner.css('transition', 'all 1.3s')
                     list.removeClass("text-lightGreen");
-                    list.removeClass("text-lg");
                     list.removeClass("font-bold");
                     list.removeClass("bg-whiteDark");
                     list.removeClass("bg-lightBlue");
@@ -135,7 +139,6 @@
                     list.removeClass("text-white");
                     list.addClass("text-mainBlue");
                     list.addClass("font-bold");
-                    list.addClass("text-lg");
                     list.addClass("bg-whiteDark");
                     header.removeClass("bg-mainBlue");
                     cutCorner.removeClass("bg-offWhite");
@@ -168,7 +171,7 @@
     @media only screen and (max-width: 900px) {
         .cutCorner {
             background-color: #4a4b62;
-            width: 100vw!important;
+            width: 100vw !important;
         }
     }
 </style>
