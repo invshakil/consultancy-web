@@ -76,17 +76,89 @@
                                                               placeholder="seo keyword"
                                                               hint="comma (,) separated"/>
                             </v-col>
+
                             <v-col cols="12" md="4">
+                                <VTextAreaFieldWithValidation v-model="form.fb"
+                                                              rules="required"
+                                                              rows="1"
+                                                              ref="fb"
+                                                              field="fb"
+                                                              :label="'Facebook Link*'"
+                                                              placeholder="Facebook Link"/>
+                            </v-col>
+                            <v-col cols="12" md="4">
+                                <VTextAreaFieldWithValidation v-model="form.li"
+                                                              rules="required"
+                                                              rows="1"
+                                                              ref="li"
+                                                              field="li"
+                                                              :label="'LinkedIn Link*'"
+                                                              placeholder="LinkedIn Link"/>
+                            </v-col>
+                            <v-col cols="12" md="4">
+                                <VTextAreaFieldWithValidation v-model="form.tw"
+                                                              rules="required"
+                                                              rows="1"
+                                                              ref="tw"
+                                                              field="tw"
+                                                              :label="'Twitter Link*'"
+                                                              placeholder="Twitter Link"/>
+                            </v-col>
+                            <v-col cols="12" md="4">
+                                <VTextAreaFieldWithValidation v-model="form.in"
+                                                              rules="required"
+                                                              rows="1"
+                                                              ref="in"
+                                                              field="in"
+                                                              :label="'Instagram Link*'"
+                                                              placeholder="Instagram Link"/>
+                            </v-col>
+                            <v-col cols="12" md="4">
+                                <VTextAreaFieldWithValidation v-model="form.ad"
+                                                              rules="required"
+                                                              rows="1"
+                                                              ref="ad"
+                                                              field="ad"
+                                                              :label="'Address*'"
+                                                              placeholder="Address"/>
+                            </v-col>
+                            <v-col cols="12" md="4">
+                                <VTextAreaFieldWithValidation v-model="form.ph"
+                                                              rules="required"
+                                                              rows="1"
+                                                              ref="ph"
+                                                              field="ph"
+                                                              :label="'Phone No. *'"
+                                                              placeholder="Phone No. "/>
+                            </v-col>
+                            <v-col cols="12" md="4">
+                                <VTextAreaFieldWithValidation v-model="form.mail"
+                                                              rules="required"
+                                                              rows="1"
+                                                              ref="mail"
+                                                              field="mail"
+                                                              :label="'Email *'"
+                                                              placeholder="Email"/>
+                            </v-col>
+
+                            <v-col cols="12" md="12">
+                                <VTextAreaFieldWithValidation v-model="form.about"
+                                                              rules="required"
+                                                              rows="4"
+                                                              ref="about"
+                                                              field="about"
+                                                              :label="'About*'"
+                                                              placeholder="About"/>
+                            </v-col>
+                            <v-col cols="12" md="12">
                                 <VTextAreaFieldWithValidation v-model="form.home_page_description"
                                                               rules="required"
-                                                              rows="2"
+                                                              rows="4"
                                                               ref="home_page_description"
                                                               field="home_page_description"
                                                               :label="'Home page description*'"
                                                               placeholder="Home page description"/>
                             </v-col>
-
-
 <!--                            <v-col cols="12" md="12">-->
 <!--                                <VFileInputWithValidation v-model="form.home_page_image"-->
 <!--                                                          :image-url="form.home_page_image_url"-->
@@ -134,6 +206,14 @@ export default {
             study_description: '',
             home_page_title: '',
             home_page_description: '',
+            about: '',
+            fb: '',
+            li: '',
+            in: '',
+            tw: '',
+            ad: '',
+            ph: '',
+            mail: '',
             home_page_keywords: '',
             home_page_image: '',
             home_page_image_url: '',

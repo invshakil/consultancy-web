@@ -5,21 +5,8 @@
         <div class="contact"></div>
         <h2 class="text-4xl text-cancel contact-header text-center tracking-wider font-bold">ABOUT US</h2>
         <p class="text-sm text-text text-center contact-message tracking-wider font-light">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet, odio id mollis cursus, ipsum metus
-            ornare nibh, pharetra elementum urna felis vel mi. Cras tristique sodales pulvinar. Quisque interdum leo ut
-            consequat facilisis. Morbi scelerisque massa vel dignissim vestibulum. Nullam porttitor ipsum sed sem
-            porttitor
-            iaculis. Sed gravida consectetur velit non tincidunt. Sed tempus ligula ut tempus dictum. Proin sagittis,
-            leo
-            quis bibendum porttitor, ipsum metus maximus tellus, vitae porta augue nulla malesuada felis. Vivamus
-            consectetur non lorem sed commodo. Phasellus nec quam non dolor pellentesque aliquamtristique sodales
-            pulvinar.
-            Quisque interdum leo ut
-            consequat facilisis. Morbi scelerisque massa vel dignissim vestibulum.dolor pellentesque aliquamtristique
-            sodales pulvinar. Quisque interdum leo ut
-            consequat facilisis. Morbi scelerisque massa vel dignissim vestibulum.dolor pellentesque aliquamtristique
-            sodales pulvinar. Quisque interdum leo ut
-            consequat facilisis. Morbi scelerisque massa vel dignissim vestibulum.</p>
+            {{$settings['about']}}
+        </p>
 
         <div class="pb-20" style="margin-top: 9vh; height: 330px">
             <iframe

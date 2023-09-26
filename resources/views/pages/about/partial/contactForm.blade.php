@@ -34,7 +34,8 @@
                 <li class="list-item">
                     <em class="fa fa-map-marker fa-2x">
                         <span
-                            class="place text-lightGreen lg:text-lg md:text-sm w-full">36/A, Shegunbagicha, Dhaka, Bangladesh
+                            class="place text-lightGreen lg:text-lg md:text-sm w-full">
+                             {{$settings['ad']}}
                         </span>
                     </em>
                 </li>
@@ -42,7 +43,8 @@
                     <em class="fa fa-phone fa-2x">
                         <span class="text-lightGreen lg:text-lg md:text-sm phone">
                             <a
-                                href="tel:1-212-555-5555" title="Give me a call">{{env('PHONE_NUMBER')}}
+                                href="tel:1-212-555-5555" title="Give me a call">
+                                 {{$settings['ph']}}
                             </a>
                         </span>
                     </em>
@@ -50,7 +52,8 @@
                 <li class="list-item"><em class="fa fa-envelope fa-2x">
                         <span class="text-lightGreen lg:text-lg md:text-sm gmail">
                             <a href="mailto:{{env('RECEIVER_EMAIL')}}"
-                               title="Send me an email">{{env('RECEIVER_EMAIL')}}
+                               title="Send me an email">
+                                 {{$settings['mail']}}
                             </a>
                         </span>
                     </em>
