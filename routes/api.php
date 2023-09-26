@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\App\AppController;
 use App\Http\Controllers\Api\App\ArticleController as AppArticleController;
 use App\Http\Controllers\Api\ArticleController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\BannerController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\GalleryController;
@@ -94,5 +95,12 @@ Route::group([
     Route::post("news/{id}", [NewsController::class, 'update']);
     Route::get("news/{slug}/edit", [NewsController::class, 'edit']);
     Route::get("fetch-all-published-news", [NewsController::class, 'get']);
+
+    Route::apiResource("banner", BannerController::class);
+    Route::post("save-banner-status", [BannerController::class, 'saveNewsStatus']);
+    Route::delete("delete-banner/{id}", [BannerController::class, 'deleteNews']);
+    Route::post("banner/{id}", [BannerController::class, 'update']);
+    Route::get("banner/{slug}/edit", [BannerController::class, 'edit']);
+    Route::get("fetch-all-published-banner", [BannerController::class, 'get']);
 
 });

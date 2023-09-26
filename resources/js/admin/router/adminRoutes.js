@@ -67,10 +67,22 @@ const routes = [
         component: () => import(`@/views/News/New.vue`),
     },
     {
+        path: 'create-banner',
+        name: 'new-banner',
+        meta: {name: 'New Banner', slug: 'new-banner', requiresAuth: true},
+        component: () => import(`@/views/banner/New.vue`),
+    },
+    {
         path: 'news/:slug/edit',
         name: 'edit-news',
         meta: {name: 'Edit News', slug: 'edit-news', requiresAuth: true},
         component: () => import(`@/views/News/Edit.vue`),
+    },
+    {
+        path: 'banner/:slug/edit',
+        name: 'edit-banner',
+        meta: {name: 'Edit Banner', slug: 'edit-banner', requiresAuth: true},
+        component: () => import(`@/views/Banner/Edit.vue`),
     },
     {
         path: 'countries',
@@ -89,6 +101,12 @@ const routes = [
         name: 'news',
         meta: {name: 'News', slug: 'news', requiresAuth: true},
         component: () => import(`@/views/News/List.vue`)
+    },
+    {
+        path: 'banner',
+        name: 'banner',
+        meta: {name: 'Banner', slug: 'banner', requiresAuth: true},
+        component: () => import(`@/views/Banner/List.vue`)
     },
     {
         path: 'pages',

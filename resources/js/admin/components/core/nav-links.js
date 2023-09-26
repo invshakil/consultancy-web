@@ -73,6 +73,11 @@ const adminRoutes = [
                 to: `/${adminPrefixSlug}/news`,
                 icon: 'mdi-square-edit-outline',
                 slug: 'news'
+            },
+            {
+                to: `/${adminPrefixSlug}/banner`,
+                icon: 'mdi-format-wrap-inline',
+                slug: 'banner'
             }
         ]
     },
